@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ElenaSoshina/visaland/static/css/main.abb85a43.css",
+    "main.js": "/ElenaSoshina/visaland/static/js/main.b76aabf2.js",
+    "index.html": "/ElenaSoshina/visaland/index.html",
+    "static/media/issue_doc.svg": "/ElenaSoshina/visaland/static/media/issue_doc.69a6e87986dfa4eec54e22a096630ad4.svg",
+    "main.abb85a43.css.map": "/ElenaSoshina/visaland/static/css/main.abb85a43.css.map",
+    "main.b76aabf2.js.map": "/ElenaSoshina/visaland/static/js/main.b76aabf2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abb85a43.css",
+    "static/js/main.b76aabf2.js"
+  ]
+}
