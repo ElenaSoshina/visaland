@@ -1,0 +1,68 @@
+.header {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navLinks li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navLinks li a:hover {
+    color: #ffc107;
+}
+
+.burgerMenu {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .burger-menu {
+        display: block;
+    }
+
+    .navLinks {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: black;
+        text-align: center;
+    }
+
+    .navLinks.open {
+        display: block;
+    }
+
+    .navLinks ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .burgerMenu {
+        display: block;
+        position: absolute;
+        right: 10px;
+    }
+}

@@ -1,0 +1,86 @@
+.stepsSection {
+    text-align: center;
+    padding: 50px 0px;
+}
+
+.stepsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.stepCard {
+    min-height: 200px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    flex: 1;
+    min-width: 200px;
+    max-width: 260px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+
+.stepNumber {
+    font-size: 18px;
+    color: #212121;
+}
+
+.stepDescription {
+    font-size: 14px;
+    font-weight: normal;
+    color: grey;
+    margin-top: auto;
+    margin-bottom: 5px;
+}
+
+.highlighted {
+    background: #ffe500;
+    color: black;
+    font-weight: bold;
+    border: none;
+    position: relative;
+
+}
+
+.icon {
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    bottom: 35%;
+    right: 10%;
+}
+
+.desktopContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .desktopContainer {
+        display: none;
+    }
+
+    .mobileSwiper {
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobileSwiper {
+        display: none;
+    }
+}
