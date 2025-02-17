@@ -49,6 +49,12 @@ const pricingData = [
 ];
 
 function Pricing() {
+    const scrollToForm = () => {
+        const formSection = document.getElementById("application-form");
+        if (formSection) {
+            formSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
     return (
         <section className={pricingStyles.pricingSection}>
             <h2 className={pricingStyles.title}>Спецпредложения</h2>
@@ -74,7 +80,7 @@ function Pricing() {
                         {/*        <li key={index}>{feature}</li>*/}
                         {/*    ))}*/}
                         {/*</ul>*/}
-                        <button className={pricingStyles.orderButton}>Заказать</button>
+                        <button className={pricingStyles.orderButton} onClick={scrollToForm}>Заказать</button>
                     </div>
                 ))}
             </div>
