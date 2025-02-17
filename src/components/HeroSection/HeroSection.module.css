@@ -1,5 +1,5 @@
 .hero {
-    background: #FFC107; /* Основной желтый цвет */
+    background: linear-gradient(90deg, #FFE500 60%, #FFC107 90%);
     color: #212121; /* Черный текст */
     text-align: center;
     padding: 100px 20px;
@@ -30,6 +30,7 @@ p {
 }
 
 .primaryButton {
+    width: 60%;
     background-color: #212121;
     color: white;
     padding: 15px 30px;

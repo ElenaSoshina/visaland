@@ -23,26 +23,29 @@ function StepsSection() {
 
             <div className={stepsStyles.mobileSwiper}>
                 <Swiper
-                    spaceBetween={20}
-                    slidesPerView={1.2}
-                    pagination={{clickable: true}}
+                    spaceBetween={5} // Убираем лишние отступы
+                    slidesPerView={1.15} // Немного увеличиваем карточку, чтобы Swiper её корректно центрировал
+                    centeredSlides={true} // Гарантируем центрирование первой карточки
+                    initialSlide={0} // Начинаем с первой карточки
+                    pagination={{ el: ".stepsPagination", clickable: true }}
                     modules={[Pagination]}
                     breakpoints={{
-                        768: {slidesPerView: 3, spaceBetween: 20}
+                        768: { slidesPerView: 3, spaceBetween: 20 }
                     }}
+                    className={stepsStyles.stepsSwiper}
                 >
                     {stepsData.map((step) => (
-                        <SwiperSlide key={step.id}>
-                            <div
-                                className={`${stepsStyles.stepCard} ${step.isHighlighted ? stepsStyles.highlighted : ""}`}>
+                        <SwiperSlide key={step.id} className={stepsStyles.swiperSlide}>
+                            <div className={`${stepsStyles.stepCard} ${step.isHighlighted ? stepsStyles.highlighted : ""}`}>
                                 <span className={stepsStyles.stepNumber}>{step.id < 10 ? `0${step.id}` : step.id}</span>
                                 <h3>{step.title}</h3>
                                 <p className={stepsStyles.stepDescription}>{step.description}</p>
-                                {step.isHighlighted && <DocumentCheckIcon className={stepsStyles.icon}/>}
+                                {step.isHighlighted && <DocumentCheckIcon className={stepsStyles.icon} />}
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                <div className={`swiper-pagination stepsPagination ${stepsStyles.stepsPagination}`}></div>
             </div>
 
 

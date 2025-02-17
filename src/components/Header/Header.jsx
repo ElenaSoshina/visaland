@@ -5,12 +5,15 @@ function Header() {
     const [menuOpen, setMenuOpen] = useState(false)
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>VISALAND</div>
+            <div className={styles.logo}>
+                <span className={styles.visa}>VISA</span>
+                <span className={styles.land}>LAND</span>
+            </div>
             <button className={styles.burgerMenu} onClick={() => setMenuOpen(!menuOpen)}>
                 ☰
             </button>
             <nav>
-                <ul className={`${styles.navLinks} ${menuOpen ? styles.open : ''}`}>
+            <ul className={`${styles.navLinks} ${menuOpen ? styles.open : ''}`}>
                     <li><a href="/">Главная</a></li>
                     <li><a href="/about">О компании</a></li>
                     <li><a href="/services">Услуги</a></li>

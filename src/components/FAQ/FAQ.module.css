@@ -1,11 +1,12 @@
+/* Основной контейнер секции */
 .faqSection {
-    text-align: left;
-    padding: 60px 20px;
-    background-color: #fff;
-    max-width: 1100px;
-    margin: 0 auto;
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 1450px;
+    margin: auto;
 }
 
+/* Заголовок */
 .faqHeader {
     margin-bottom: 20px;
 }
@@ -21,35 +22,95 @@
     color: #ffcc00;
 }
 
-.faqContainer {
+/* ✅ Десктопная версия - 2 карточки в строку */
+.desktopGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Две карточки в строке */
     gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: auto;
 }
 
+/* ✅ Карточка FAQ */
 .faqItem {
     background: #f8f8f8;
     padding: 20px;
     border-radius: 10px;
     text-align: left;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    height: 100%;
 }
 
-.faqQuestion {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 20px;
+/* Контейнер для равномерного распределения контента */
+.faqContent {
+    flex-grow: 1;
 }
 
+/* Ответ прижат к нижнему краю */
 .faqAnswer {
     font-size: 16px;
     color: #555;
+    margin-top: auto;
 }
 
+/* Разделитель */
 .separator {
     width: 60%;
     margin-left: 0;
+}
+
+/* ✅ Мобильная версия (Скрываем сетку и включаем слайдер) */
+@media screen and (max-width: 768px) {
+    .desktopGrid {
+        display: none;
+    }
+
+    .mobileSlider {
+        display: block;
+    }
+
+    /* Фиксированная высота карточек в слайдере */
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .faqItem {
+        min-height: 350px;
+        height: auto;
+    }
+}
+
+/* ✅ Десктопная версия (Скрываем слайдер) */
+@media screen and (min-width: 769px) {
+    .mobileSlider {
+        display: none;
+    }
+}
+
+/* ✅ Вынесенная пагинация */
+.faqPagination {
+    margin-top: 20px;
+    text-align: center;
+    position: relative !important;
+}
+
+/* ✅ Делаем точки больше и исправляем их цвет */
+.faqPagination .swiper-pagination-bullet {
+    background-color: #000 !important; /* Цвет обычных точек */
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Делаем активную точку жёлтой */
+.faqPagination .swiper-pagination-bullet-active {
+    background: #ffcc00 !important; /* Цвет активной точки */
+    opacity: 1;
+    transform: scale(1.2);
 }

@@ -61,7 +61,7 @@ function Services() {
                     modules={[Pagination]}
                     spaceBetween={20}
                     slidesPerView={1}
-                    pagination={{ clickable: true }}
+                    pagination={{ el: ".servicesPagination", clickable: true }} // Указываем кастомный контейнер для пагинации
                 >
                     {servicesData.map(service => (
                         <SwiperSlide key={service.id}>
@@ -73,6 +73,8 @@ function Services() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                {/* Контейнер для пагинации */}
+                <div className={`servicesPagination ${styles.servicesPagination}`}></div>
             </div>
 
             <div className={styles.buttonContainer}>

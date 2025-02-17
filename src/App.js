@@ -9,6 +9,9 @@ import FAQ from "./components/FAQ/FAQ";
 import {Services} from "./components/Services/Services";
 import {Pricing} from "./components/Pricing/Pricing";
 import {StepsSection} from "./components/Steps/StepsSection";
+import Form from "./components/Form/Form";
+import Footer from "./components/Footer/Footer";
+import Agreement from "./components/Agreement/Agreement";
 
 
 
@@ -20,8 +23,10 @@ function App() {
           <StepsSection />
         <Services />
         <Pricing />
+          <Agreement />
         <FAQ />
-        {/*<Footer />*/}
+          <Form />
+        <Footer />
       </div>
   );
 }

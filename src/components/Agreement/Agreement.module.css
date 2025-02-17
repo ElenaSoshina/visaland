@@ -1,0 +1,138 @@
+/* Основной контейнер секции */
+.agreementSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Контентная часть с заголовком и кнопками */
+.content {
+    max-width: 50%;
+}
+
+/* Заголовок */
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #121212;
+    margin-bottom: 16px;
+}
+
+/* Описание */
+.description {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+/* Группа кнопок */
+.buttonGroup {
+    display: flex;
+    gap: 16px;
+}
+
+/* Основная кнопка */
+.primaryButton {
+    background-color: #ffe500;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.primaryButton:hover {
+    background-color: #e0a800;
+}
+
+/* Вторая кнопка */
+.secondaryButton {
+    background-color: transparent;
+    color: #ffe500;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: 2px solid #ffe500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.secondaryButton:hover {
+    background-color: #e0a800;
+}
+
+/* Контейнер изображения */
+.imageContainer {
+    background-image: url("../../images/vacation.png");
+    box-sizing: border-box;
+    max-width: 45%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Изображение */
+.image {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+
+/* Медиа-запрос для адаптации */
+@media (max-width: 1024px) {
+    .agreementSection {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .buttonGroup {
+        justify-content: center;
+    }
+
+
+    .onlineConsultation {
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .agreementSection {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .primaryButton, .secondaryButton {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .imageContainer {
+        max-width: 100%;
+        /*background-size: cover;*/
+        /*background-position: center;*/
+        margin-top: 20px;
+    }
+}

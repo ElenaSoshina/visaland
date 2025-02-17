@@ -1,0 +1,667 @@
+/* Общий стиль для оверлея */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+/* Основной контейнер модального окна */
+.modal {
+    background: white;
+    width: 90%;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Кнопка закрытия */
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+/* Заголовок */
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 16px;
+}
+
+/* Блок с ценой */
+.priceBox {
+    background: #ffe500;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+/* Группа ввода */
+.inputGroup {
+    margin-top: 16px;
+}
+.inputGroup label {
+    font-weight: bold;
+    color: black;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Стили инпутов и селектов */
+.input, .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Группа кнопок */
+.buttonGroup {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Кнопки */
+.outlineButton {
+    padding: 10px 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.blackButton {
+    padding: 10px 16px;
+    background: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Футер */
+.footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Текст политики */
+.privacyText {
+    font-size: 12px;
+    color: gray;
+}
+
+/* Стили для секции регистрации по месту жительства */
+.residenceGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.label {
+    font-weight: bold;
+    color: black;
+}
+
+.toggleButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.activeToggle {
+    padding: 8px 16px;
+    background: #ffe500;
+    color: black;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.inactiveToggle {
+    padding: 8px 16px;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Общий стиль для оверлея */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+/* Основной контейнер модального окна */
+.modal {
+    background: white;
+    width: 90%;
+    max-width: 1200px;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Кнопка закрытия */
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+/* Заголовок */
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 16px;
+}
+
+/* Блок с ценой */
+.priceBox {
+    background: #ffe500;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+/* Группа ввода */
+.inputGroup {
+    margin-top: 16px;
+}
+.inputGroup label {
+    font-weight: bold;
+    color: black;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Стили инпутов и селектов */
+.input, .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Группа кнопок */
+.buttonGroup {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Кнопки */
+.outlineButton {
+    padding: 10px 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.blackButton {
+    padding: 10px 16px;
+    background: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Футер */
+.footer {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Текст политики */
+.privacyText {
+    font-size: 12px;
+    color: gray;
+}
+
+/* Стили для секции регистрации по месту жительства */
+.residenceGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.label {
+    font-weight: bold;
+    color: black;
+}
+
+.toggleButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.activeToggle {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #ffe500;
+    color: black;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.inactiveToggle {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    border: 1px solid #d1d5db;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.inactiveToggle:hover {
+    background: #fef08a;
+}
+
+/* Стили для кнопки "Включить госпошлину" */
+.switchContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.switchInactive, .switchActive {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.switchInactive {
+    background: #ccc;
+}
+
+.switchActive {
+    background: #ffe500;
+}
+
+.switchInactive::after, .switchActive::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.switchActive::after {
+    transform: translateX(20px);
+}
+
+.switchLabel {
+    font-size: 14px;
+    color: black;
+}
+
+/* Контейнер для паспортов */
+/* Контейнер для паспортов */
+.passportContainer {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+/* Блок паспорта */
+.passportBox {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.passportHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.passportIcon {
+    width: 40px;
+    height: 40px;
+}
+
+.passportBox h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.passportBox p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+/* Список цен */
+.passportBox ul {
+    list-style: none;
+    padding: 0;
+}
+
+.priceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ccc;
+    position: relative;
+    overflow: hidden;
+}
+
+.priceItem:last-child {
+    border-bottom: none;
+}
+
+.priceWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.price {
+    font-weight: bold;
+    color: black;
+    transition: transform 0.3s ease-in-out;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Кнопка выбора */
+.selectButton {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Анимация: при наведении цена смещается влево, кнопка появляется */
+.priceItem:hover .priceWrapper {
+    transform: translateX(-80px);
+}
+
+.priceItem:hover .selectButton {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Стили для группы кнопок */
+.buttonGroup {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Активная кнопка */
+.activeButton {
+    background: #ffe500;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Неактивная кнопка */
+.outlineButton {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.outlineButton:hover {
+    background: #fef08a;
+    color: black;
+}
+
+/* Текстовое описание выбранного метода подачи документов */
+.methodDescription {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Контейнер для контактной информации */
+.contactContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Контейнер формы */
+.contactForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    flex: 1;
+}
+
+/* Поля ввода */
+.inputField {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Контейнер кнопки и чекбокса */
+.contactActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* Кнопка отправки */
+.submitButton {
+    background: #ffe500;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background: #fef08a;
+}
+
+.submitButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Чекбокс согласия */
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.checkboxLabel input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Контейнер расчета стоимости */
+.costCalculation {
+    background: #f8f8f8;
+    padding: 16px;
+    border-radius: 12px;
+    width: 280px;
+    font-size: 14px;
+    color: black;
+    text-align: left;
+    max-height: 220px;
+    font-size: 10px;
+}
+
+.costCalculation h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.costCalculation p {
+    margin: 4px 0;
+}
+
+.costCalculation hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.costCalculation .totalPrice {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.firstContactContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 95%;
+        max-width: 500px;
+        max-height: 85vh;
+        padding: 16px;
+    }
+
+    .passportContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contactContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .contactActions {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .contactForm {
+        flex-direction: column;
+    }
+
+    .inputField {
+        width: 100%;
+    }
+
+
+    .submitButton {
+        width: 100%;
+        text-align: center;
+    }
+
+    .priceItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px dashed #ccc;
+    }
+
+    .price {
+        flex: -1;
+        text-align: center;
+        font-weight: bold;
+        color: black;
+    }
+
+    .selectButton {
+        background: #0056d2;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}

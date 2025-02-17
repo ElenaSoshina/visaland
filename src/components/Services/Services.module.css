@@ -2,12 +2,10 @@
     background: linear-gradient(90deg, #FFE500 60%, #FFC107 90%);
     background-size: cover;
     background-position: center;
-    width: 100%;
+    max-width: 1450px;
     padding: 60px 20px;
     text-align: center;
     border-radius: 20px;
-    max-width: 1450px;
-    min-width: 100%;
     margin: auto;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -28,7 +26,7 @@
 
 .servicesSection::after {
     content: "";
-    position: absolute;
+    /*position: absolute;*/
     bottom: 10%;
     right: 20%;
     width: 400px;
@@ -85,6 +83,11 @@ h2 {
 }
 
 @media screen and (max-width: 768px) {
+
+    .servicesSection {
+        padding: 20px 20px;
+    }
+
     .desktopGrid {
         display: none;
     }
@@ -122,5 +125,33 @@ h2 {
 
 .showMoreButton:hover, .hideButton:hover {
     background: black;
+}
+
+/* Добавляем отступ, чтобы пагинация не перекрывала карточки */
+.servicesSwiper {
+    padding-bottom: 50px; /* Создаём место для пагинации */
+}
+
+/* Контейнер для вынесенной пагинации */
+.servicesPagination {
+    margin-top: 20px;
+    text-align: center;
+    position: relative !important;
+}
+
+/* Стили точек пагинации */
+.servicesPagination .swiper-pagination-bullet {
+    background-color: #000 !important; /* Цвет неактивных точек */
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Стили активной точки */
+.servicesPagination .swiper-pagination-bullet-active {
+    background-color: #ffcc00 !important; /* Цвет активной точки */
+    opacity: 1;
+    transform: scale(1.2);
 }
 

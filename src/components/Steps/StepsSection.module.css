@@ -1,9 +1,11 @@
+/* Основной контейнер секции */
 .stepsSection {
     text-align: center;
     padding: 50px 0px;
 }
 
-.stepsContainer {
+/* Контейнер для десктопной версии */
+.desktopContainer {
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -11,6 +13,7 @@
     margin: auto;
 }
 
+/* Стили для карточек */
 .stepCard {
     min-height: 200px;
     background: white;
@@ -27,13 +30,13 @@
     height: 100%;
 }
 
-
-
+/* Номер шага */
 .stepNumber {
     font-size: 18px;
     color: #212121;
 }
 
+/* Описание шага */
 .stepDescription {
     font-size: 14px;
     font-weight: normal;
@@ -42,31 +45,32 @@
     margin-bottom: 5px;
 }
 
+/* Выделенная карточка */
 .highlighted {
     background: #ffe500;
     color: black;
     font-weight: bold;
     border: none;
     position: relative;
-
 }
 
+/* Иконка */
 .icon {
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     position: absolute;
-    bottom: 35%;
-    right: 10%;
+    bottom: 25%;
+    right: 3%;
 }
 
-.desktopContainer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1300px;
+/* Мобильный Swiper */
+.mobileSwiper {
+    display: none;
+    width: 90%;
     margin: auto;
 }
 
+/* Показываем слайдер только на мобильных */
 @media (max-width: 768px) {
     .desktopContainer {
         display: none;
@@ -74,13 +78,65 @@
 
     .mobileSwiper {
         display: block;
-        width: 90%;
-        margin: auto;
     }
 }
 
+/* Убираем Swiper на больших экранах */
 @media (min-width: 769px) {
     .mobileSwiper {
         display: none;
     }
+}
+
+/* ✅ Swiper занимает всю ширину */
+.stepsSwiper {
+    padding-bottom: 10px;
+    width: 100vw;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ✅ Центрируем wrapper */
+.stepsSwiper .swiper-wrapper {
+    display: flex;
+    justify-content: center !important;
+}
+
+/* ✅ Настройка слайдов */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto !important;
+    max-width: 90%;
+}
+
+/* ✅ Убираем лишние отступы */
+.stepsSwiper .swiper-slide {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ✅ Вынесенная пагинация */
+.stepsPagination {
+    margin-top: 15px;
+    text-align: center;
+    position: relative !important;
+    width: 100%;
+}
+
+/* ✅ Стили точек пагинации */
+.stepsPagination .swiper-pagination-bullet {
+    background-color: #000 !important; /* Цвет неактивных точек */
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Стили активной точки */
+.stepsPagination .swiper-pagination-bullet-active {
+    background-color: #ffcc00 !important; /* Жёлтая активная точка */
+    opacity: 1;
+    transform: scale(1.2);
 }
