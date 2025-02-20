@@ -4,40 +4,145 @@ import { X } from "lucide-react";
 import styles from "./Modal.module.css";
 import {FaFingerprint} from "react-icons/fa";
 import passport from '../../images/icons8-герб-россии-50.png'
+import {IMaskInput} from "react-imask";
 
 const Modal = ({ isOpen, onClose }) => {
 
     const [selectedResidence, setSelectedResidence] = useState("Москва и обл.");
+    const [selectedAge, setSelectedAge] = useState("Взрослые 18 лет");
     const [isDutyEnabled, setIsDutyEnabled] = useState(false);
+    const [selectedBioIndex, setSelectedBioIndex] = useState(null); // Выбранная кнопка в секции Биометрический паспорт
+    const [selectedOldIndex, setSelectedOldIndex] = useState(null)
+    const [selectedPassportType, setSelectedPassportType] = useState("");
+    const [selectedDuration, setSelectedDuration] = useState("");
     const [selectedMethod, setSelectedMethod] = useState("email");
     const [totalPrice, setTotalPrice] = useState(0);
-    const [formData, setFormData] = useState({ name: "", email: "", phone: "", consent: false });
+    const [formData, setFormData] = useState({ name: "", email: "", phone: "", consent: true });
+    const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+    const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    const validatePhone = (phone) => phone.replace(/\D/g, "").length === 11;
+
+    const bioPrices = [
+        { label: "22-23 раб. день", price: 20000 },
+        { label: "19-20 раб. день", price: 20000 },
+        { label: "15-17 раб. день", price: 20000 },
+        { label: "13-14 раб. день", price: 20000 },
+    ];
+
+    const oldPrices = [
+        { label: "21 раб. день", price: 16000 },
+        { label: "15-17 раб. день", price: 16000 },
+        { label: "8 раб. день", price: 16000 },
+        { label: "7 раб. день", price: 16000 },
+    ];
 
     const handleResidenceClick = (residence) => {
         setSelectedResidence(residence);
+    };
+
+    const handleAgeChange = (event) => {
+        setSelectedAge(event.target.value);
+    };
+
+    const handleSelectPrice = (basePrice, index, type, duration) => {
+        let updatedPrice = basePrice;
+
+        // Увеличиваем цену, если госпошлина включена
+        if (isDutyEnabled) {
+            updatedPrice += type === "bio" ? 6000 : 2000;
+        }
+
+        if (type === "bio") {
+            setSelectedBioIndex(index);
+            setSelectedOldIndex(null);// Сбрасываем выбор в другой секции
+            setSelectedPassportType('Биометрический загранпаспорт');
+        } else {
+            setSelectedOldIndex(index);
+            setSelectedBioIndex(null); // Сбрасываем выбор в другой секции
+            setSelectedPassportType('Загранпаспорт старого образца');
+        }
+        setSelectedDuration(duration);
+        setTotalPrice(updatedPrice);
     };
 
     const handleMethodClick = (method) => {
         setSelectedMethod(method);
     };
 
+    // Переключение госпошлины
     const toggleDuty = () => {
-        setIsDutyEnabled(!isDutyEnabled);
+        setIsDutyEnabled((prev) => {
+            const newDutyState = !prev;
+            let newTotalPrice = totalPrice;
+
+            if (selectedBioIndex !== null) {
+                const basePrice = bioPrices[selectedBioIndex].price;
+                newTotalPrice = newDutyState ? basePrice + 6000 : basePrice;
+            } else if (selectedOldIndex !== null) {
+                const basePrice = oldPrices[selectedOldIndex].price;
+                newTotalPrice = newDutyState ? basePrice + 2000 : basePrice;
+            }
+
+            setTotalPrice(newTotalPrice);
+            return newDutyState;
+        });
     };
 
-    const handleSelectPrice = (price) => {
-        setTotalPrice(price);
-    };
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
+
         setFormData((prevData) => ({
             ...prevData,
             [name]: type === "checkbox" ? checked : value,
         }));
+
+        if (name === "name") {
+            setErrors((prev) => ({
+                ...prev,
+                name: value.length >= 2 ? "" : "Имя должно содержать минимум 2 символа",
+            }));
+        }
+
+        if (name === "email") {
+            setErrors((prev) => ({
+                ...prev,
+                email: validateEmail(value) ? "" : "Введите корректный email",
+            }));
+        }
+
+        if (name === "phone") {
+            setErrors((prev) => ({
+                ...prev,
+                phone: validatePhone(value) ? "" : "Введите корректный номер телефона",
+            }));
+        }
+
+        if (name === "consent") {
+            setErrors((prev) => ({
+                ...prev,
+                consent: checked ? "" : "Вы должны согласиться с обработкой данных",
+            }));
+        }
     };
 
-    const isFormValid = formData.name && formData.email && formData.phone && formData.consent;
+    const isFormValid =
+        formData.name &&
+        formData.email &&
+        formData.phone &&
+        formData.consent &&
+        selectedPassportType !== ""; // Услуга должна быть выбрана
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!selectedPassportType) {
+            setErrors((prev) => ({
+                ...prev,
+                passportType: "Выберите тип паспорта", // Добавляем ошибку, если паспорт не выбран
+            }));
+            return;
+        }
+    };
 
     if (!isOpen) return null;
 
@@ -59,13 +164,13 @@ const Modal = ({ isOpen, onClose }) => {
                     <span className={styles.label}>Регистрация по месту жительства:</span>
                     <div className={styles.toggleButtons}>
                         <button
-                            className={selectedResidence === "Москва и обл." ? styles.activeToggle : styles.inactiveToggle}
+                            className={`${styles.toggleButton} ${selectedResidence === "Москва и обл." ? styles.activeToggle : styles.inactiveToggle}`}
                             onClick={() => handleResidenceClick("Москва и обл.")}
                         >
                             Москва и обл.
                         </button>
                         <button
-                            className={selectedResidence === "Регионы РФ" ? styles.activeToggle : styles.inactiveToggle}
+                            className={`${styles.toggleButton} ${selectedResidence === "Регионы РФ" ? styles.activeToggle : styles.inactiveToggle}`}
                             onClick={() => handleResidenceClick("Регионы РФ")}
                         >
                             Регионы РФ
@@ -74,63 +179,84 @@ const Modal = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label>Возраст</label>
-                    <select className={styles.select}>
+                    <label htmlFor="age">Возраст</label>
+                    <select id="age" value={selectedAge} className={styles.select} onChange={handleAgeChange}>
                         <option>Взрослее 18 лет</option>
                         <option>Дети до 14 лет</option>
                         <option>Подростки от 14 до 18 лет</option>
                     </select>
                 </div>
 
+                {/* Блок с переключателем госпошлины */}
                 <div className={styles.inputGroup}>
                     <label>Включить госпошлину</label>
                     <div className={styles.switchContainer} onClick={toggleDuty}>
                         <div className={isDutyEnabled ? styles.switchActive : styles.switchInactive}></div>
                         <span className={styles.switchLabel}>
-              {isDutyEnabled ? "Оплачивается самостоятельно, расскажем как." : ""}
-            </span>
+            {isDutyEnabled ? "Оплачивается самостоятельно, расскажем как." : ""}
+        </span>
                     </div>
                 </div>
 
+                {/* Итоговая стоимость */}
+                <div className={styles.totalPriceContainer}>
+                    <h3>Итого:</h3>
+                    <span className={styles.totalPrice}>{totalPrice} ₽</span>
+                    <p className={styles.dutyInfo}>
+                        {isDutyEnabled ? "с учетом госпошлины" : "без учета госпошлины"}
+                    </p>
+                </div>
+
                 <div className={styles.passportContainer}>
+                    {/* Секция Биометрический загранпаспорт */}
                     <div className={styles.passportBox}>
                         <div className={styles.passportHeader}>
                             <h3>Биометрический загранпаспорт</h3>
                             <FaFingerprint className={styles.passportIcon}/>
-
                         </div>
                         <p>Укажите срок изготовления и стоимость.</p>
                         <ul>
-                            {["22-23 раб. день", "19-20 раб. день", "15-17 раб. день", "13-14 раб. день"].map((item, index) => (
-                                <li key={index} className={styles.priceItem}>
-                                    {item}
-                                    <button className={styles.selectButton}
-                                            onClick={() => handleSelectPrice(20000)}>Выбрать
-                                    </button>
-                                    <span className={styles.price}>20000 ₽</span>
-                                </li>
-                            ))}
+                            {bioPrices.map((item, index) => {
+                                const finalPrice = isDutyEnabled ? item.price + 6000 : item.price;
+                                return (
+                                    <li key={index} className={styles.priceItem}>
+                                        <span className={styles.priceLabel}>{item.label}</span>
+                                        <span className={styles.price}>{finalPrice} ₽</span>
+                                        <button
+                                            className={`${styles.selectButton} ${selectedBioIndex === index ? styles.selected : ""}`}
+                                            onClick={() => handleSelectPrice(item.price, index, "bio", item.label)}
+                                        >
+                                            Выбрать
+                                        </button>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
 
+                    {/* Секция Загранпаспорт старого образца */}
                     <div className={styles.passportBox}>
                         <div className={styles.passportHeader}>
                             <h3>Загранпаспорт старого образца</h3>
-                            <img src={passport} alt="Загранпаспорт старого образца"
-                                 className={styles.passportIcon}/>
+                            <img src={passport} alt="Загранпаспорт старого образца" className={styles.passportIcon}/>
                         </div>
                         <p>Укажите срок изготовления и стоимость.</p>
                         <ul>
-                            {["21 раб. день", "15-17 раб. день", "8 раб. день", "7 раб. день"].map((item, index) => (
-                                <li key={index} className={styles.priceItem}>
-                                    {item}
-                                    <button className={styles.selectButton}
-                                            onClick={() => handleSelectPrice(16000)}>Выбрать
-                                    </button>
-
-                                    <span className={styles.price}>16000 ₽</span>
-                                </li>
-                            ))}
+                            {oldPrices.map((item, index) => {
+                                const finalPrice = isDutyEnabled ? item.price + 2000 : item.price;
+                                return (
+                                    <li key={index} className={styles.priceItem}>
+                                        <span className={styles.priceLabel}>{item.label}</span>
+                                        <span className={styles.price}>{finalPrice} ₽</span>
+                                        <button
+                                            className={`${styles.selectButton} ${selectedOldIndex === index ? styles.selected : ""}`}
+                                            onClick={() => handleSelectPrice(item.price, index, "old", item.label)}
+                                        >
+                                            Выбрать
+                                        </button>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>
@@ -140,19 +266,20 @@ const Modal = ({ isOpen, onClose }) => {
                     <label>Способ подачи документов</label>
                     <div className={styles.buttonGroup}>
                         <button
-                            className={selectedMethod === "email" ? styles.activeButton : styles.outlineButton}
+                            className={`${styles.methodButton} ${selectedMethod === "email" ? styles.activeButton : styles.outlineButton}`}
                             onClick={() => handleMethodClick("email")}
                         >
                             По электронной почте
                         </button>
                         <button
-                            className={selectedMethod === "office" ? styles.activeButton : styles.outlineButton}
+                            className={`${styles.methodButton} ${selectedMethod === "office" ? styles.activeButton : styles.outlineButton}`}
                             onClick={() => handleMethodClick("office")}
                         >
                             Офис
                         </button>
                     </div>
                 </div>
+
 
                 {selectedMethod === "email" && (
                     <p className={styles.methodDescription}>Вы получите инструкции по подаче документов на вашу
@@ -164,62 +291,97 @@ const Modal = ({ isOpen, onClose }) => {
                         записи.</p>
                 )}
                 <div className={styles.contactContainer}>
-                    <div className={styles.firstContactContainer}>
-                        <div className={styles.contactForm}>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Имя *"
-                                className={styles.inputField}
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Электронная почта *"
-                                className={styles.inputField}
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <input
-                                type="tel"
-                                name="phone"
-                                placeholder="Номер телефона *"
-                                className={styles.inputField}
-                                value={formData.phone}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
+                        <div className={styles.firstContactContainer}>
+                            <div className={styles.contactForm}>
+                                <div className={styles.row}>
+                                    {/* Имя */}
+                                    <div className={styles.inputWrapper}>
+                                        <label htmlFor="name">Имя *</label>
+                                        <input
+                                            id="name"
+                                            type="text"
+                                            name="name"
+                                            placeholder="Имя *"
+                                            className={styles.inputField}
+                                            value={formData.name}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
+                                        {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+                                    </div>
 
-                        <div className={styles.contactActions}>
-                            <button className={styles.submitButton} disabled={!isFormValid}>
-                                Отправить заявку
-                            </button>
-                            <label className={styles.checkboxLabel}>
-                                <input
-                                    type="checkbox"
-                                    name="consent"
-                                    checked={formData.consent}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                                Соглашаюсь с обработкой персональных данных
-                            </label>
-                        </div>
-                    </div>
+                                    {/* Телефон с маской */}
+                                    <div className={styles.inputWrapper}>
+                                        <label htmlFor="phone">Номер телефона *</label>
+                                        <IMaskInput
+                                            id="phone"
+                                            mask="+7 (000) 000-00-00"
+                                            unmask={true}
+                                            type="tel"
+                                            name="phone"
+                                            placeholder="+7 (999) 999-99-99"
+                                            className={styles.inputField}
+                                            value={formData.phone}
+                                            onAccept={(value) => setFormData({...formData, phone: value})}
+                                            onBlur={(e) => handleInputChange(e)} // Добавили onBlur для обновления
+                                            required
+                                        />
+                                        {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
+                                    </div>
+                                </div>
 
+                                    {/* Email с маской */}
+                                    <div className={styles.inputWrapper}>
+                                        <label htmlFor="email">Электронная почта *</label>
+                                        <input
+                                            id="email"
+                                            type="email"
+                                            name="email"
+                                            placeholder="example@mail.com"
+                                            className={styles.inputField}
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            onBlur={handleInputChange} // Валидация при выходе из поля
+                                            required
+                                        />
+                                        {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+                                    </div>
+
+
+                                </div>
+
+                                {/* Чекбокс */}
+                                <div className={styles.contactActions}>
+                                    <label className={styles.checkboxLabel} htmlFor="consent">
+                                        <input
+                                            id="consent"
+                                            type="checkbox"
+                                            name="consent"
+                                            checked={formData.consent}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
+                                        Соглашаюсь с обработкой персональных данных
+                                    </label>
+                                    {errors.consent && <span className={styles.errorText}>{errors.consent}</span>}
+                                </div>
+
+                                {/* Кнопка отправки */}
+                                <button className={styles.submitButton} disabled={!isFormValid} onClick={handleSubmit}>
+                                    Отправить заявку
+                                </button>
+
+                            {errors.passportType && <span className={styles.errorText}>{errors.passportType}</span>}
+                            </div>
                     <div className={styles.costCalculation}>
                         <h3>Загранпаспорт:</h3>
-                        <p>Взрослые от 18 лет</p>
-                        <p>{selectedResidence}</p>
-                        <p>Укажите срок изготовления и стоимость.</p>
+                        <p><strong>Тип паспорта:</strong> {selectedPassportType || "Не выбран"}</p>
+                        <p><strong>Срок выполнения:</strong> {selectedDuration || "Не выбран"}</p>
+                        <p><strong>Возраст:</strong> {selectedAge || "Не указан"}</p>
+                        <p><strong>Регистрация:</strong> {selectedResidence || "Не выбрана"}</p>
                         <hr/>
                         <p className={styles.totalPrice}>{totalPrice} ₽</p>
-                        <p>с учетом госпошлины</p>
+                        <p>{isDutyEnabled ? "с учетом госпошлины" : "без учета госпошлины"}</p>
                     </div>
                 </div>
             </motion.div>
