@@ -103,6 +103,10 @@ h2 {
     .showMoreButton, .hideButton {
         display: none;
     }
+
+    h2 {
+        font-size: 34px;
+    }
 }
 
 .buttonContainer {

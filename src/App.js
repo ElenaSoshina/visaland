@@ -21,11 +21,13 @@ function App() {
       <div className="app-container">
         <Header />
         <HeroSection />
-          <About />
+          <Pricing />
           <StepsSection />
-        <Services />
-        <Pricing />
+          <Services />
           <Agreement />
+          <About />
+
+
         <FAQ />
           <Form />
         <Footer />

@@ -123,6 +123,10 @@
     .pricingContainer {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .title {
+        font-size: 34px;
+    }
 }
 
 @media (max-width: 600px) {
