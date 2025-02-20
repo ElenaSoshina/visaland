@@ -101,8 +101,12 @@ p {
 
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
+    .hero {
+        padding-top: 180px;
+        padding-bottom: 20px;
+    }
     h1 {
-        font-size: 28px;
+        font-size: 34px;
     }
 
     .content p {
