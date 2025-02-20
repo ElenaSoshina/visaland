@@ -133,21 +133,35 @@ const Modal = ({ isOpen, onClose }) => {
         formData.consent &&
         selectedPassportType !== ""; // Услуга должна быть выбрана
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!selectedPassportType) {
+
+        if (!selectedPassportType || !selectedDuration) {
             setErrors((prev) => ({
                 ...prev,
-                passportType: "Выберите тип паспорта", // Добавляем ошибку, если паспорт не выбран
+                passportType: "Выберите тип паспорта и срок изготовления", // Устанавливаем ошибку
             }));
             return;
         }
+
+        // Если всё ок, очищаем ошибки
+        setErrors((prev) => ({
+            ...prev,
+            passportType: "",
+        }));
+
+        console.log("Форма успешно отправлена:", formData);
     };
+
+
+
 
     if (!isOpen) return null;
 
     return (
         <div className={styles.overlay}>
+
             <motion.div
                 initial={{opacity: 0, scale: 0.9}}
                 animate={{opacity: 1, scale: 1}}
@@ -291,88 +305,91 @@ const Modal = ({ isOpen, onClose }) => {
                         записи.</p>
                 )}
                 <div className={styles.contactContainer}>
-                        <div className={styles.firstContactContainer}>
-                            <div className={styles.contactForm}>
-                                <div className={styles.row}>
-                                    {/* Имя */}
-                                    <div className={styles.inputWrapper}>
-                                        <label htmlFor="name">Имя *</label>
-                                        <input
-                                            id="name"
-                                            type="text"
-                                            name="name"
-                                            placeholder="Имя *"
-                                            className={styles.inputField}
-                                            value={formData.name}
-                                            onChange={handleInputChange}
-                                            required
-                                        />
-                                        {errors.name && <span className={styles.errorText}>{errors.name}</span>}
-                                    </div>
-
-                                    {/* Телефон с маской */}
-                                    <div className={styles.inputWrapper}>
-                                        <label htmlFor="phone">Номер телефона *</label>
-                                        <IMaskInput
-                                            id="phone"
-                                            mask="+7 (000) 000-00-00"
-                                            unmask={true}
-                                            type="tel"
-                                            name="phone"
-                                            placeholder="+7 (999) 999-99-99"
-                                            className={styles.inputField}
-                                            value={formData.phone}
-                                            onAccept={(value) => setFormData({...formData, phone: value})}
-                                            onBlur={(e) => handleInputChange(e)} // Добавили onBlur для обновления
-                                            required
-                                        />
-                                        {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
-                                    </div>
+                    <div className={styles.firstContactContainer}>
+                        <div className={styles.contactForm}>
+                            <div className={styles.row}>
+                                {/* Имя */}
+                                <div className={styles.inputWrapper}>
+                                    <label htmlFor="name">Имя *</label>
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        placeholder="Имя *"
+                                        className={styles.inputField}
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    {errors.name && <span className={styles.errorText}>{errors.name}</span>}
                                 </div>
 
-                                    {/* Email с маской */}
-                                    <div className={styles.inputWrapper}>
-                                        <label htmlFor="email">Электронная почта *</label>
-                                        <input
-                                            id="email"
-                                            type="email"
-                                            name="email"
-                                            placeholder="example@mail.com"
-                                            className={styles.inputField}
-                                            value={formData.email}
-                                            onChange={handleInputChange}
-                                            onBlur={handleInputChange} // Валидация при выходе из поля
-                                            required
-                                        />
-                                        {errors.email && <span className={styles.errorText}>{errors.email}</span>}
-                                    </div>
-
-
+                                {/* Телефон с маской */}
+                                <div className={styles.inputWrapper}>
+                                    <label htmlFor="phone">Номер телефона *</label>
+                                    <IMaskInput
+                                        id="phone"
+                                        mask="+7 (000) 000-00-00"
+                                        unmask={true}
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="+7 (999) 999-99-99"
+                                        className={styles.inputField}
+                                        value={formData.phone}
+                                        onAccept={(value) => setFormData({...formData, phone: value})}
+                                        onBlur={(e) => handleInputChange(e)} // Добавили onBlur для обновления
+                                        required
+                                    />
+                                    {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
                                 </div>
-
-                                {/* Чекбокс */}
-                                <div className={styles.contactActions}>
-                                    <label className={styles.checkboxLabel} htmlFor="consent">
-                                        <input
-                                            id="consent"
-                                            type="checkbox"
-                                            name="consent"
-                                            checked={formData.consent}
-                                            onChange={handleInputChange}
-                                            required
-                                        />
-                                        Соглашаюсь с обработкой персональных данных
-                                    </label>
-                                    {errors.consent && <span className={styles.errorText}>{errors.consent}</span>}
-                                </div>
-
-                                {/* Кнопка отправки */}
-                                <button className={styles.submitButton} disabled={!isFormValid} onClick={handleSubmit}>
-                                    Отправить заявку
-                                </button>
-
-                            {errors.passportType && <span className={styles.errorText}>{errors.passportType}</span>}
                             </div>
+
+                            {/* Email с маской */}
+                            <div className={styles.inputWrapper}>
+                                <label htmlFor="email">Электронная почта *</label>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    placeholder="example@mail.com"
+                                    className={styles.inputField}
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    onBlur={handleInputChange} // Валидация при выходе из поля
+                                    required
+                                />
+                                {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+                            </div>
+
+
+                        </div>
+
+                        {/* Чекбокс */}
+                        <div className={styles.contactActions}>
+                            <label className={styles.checkboxLabel} htmlFor="consent">
+                                <input
+                                    id="consent"
+                                    type="checkbox"
+                                    name="consent"
+                                    checked={formData.consent}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                                Соглашаюсь с обработкой персональных данных
+                            </label>
+                            {errors.consent && <span className={styles.errorText}>{errors.consent}</span>}
+                        </div>
+
+                        {/* Кнопка отправки */}
+                        <button className={styles.submitButton} disabled={!isFormValid} onClick={handleSubmit}>
+                            Отправить заявку
+                        </button>
+
+                        {!selectedPassportType && !selectedDuration && (
+                            <span className={styles.infoText}>Выберите тип паспорта и срок изготовления</span>
+                        )}
+
+                    </div>
                     <div className={styles.costCalculation}>
                         <h3>Загранпаспорт:</h3>
                         <p><strong>Тип паспорта:</strong> {selectedPassportType || "Не выбран"}</p>

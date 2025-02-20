@@ -1,0 +1,136 @@
+.about_area {
+    padding: 80px 0;
+}
+
+.about_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1450px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.about_image_container {
+    flex: 1;
+}
+
+.about_image {
+    width: 100%; /* Заполняет доступное пространство */
+    max-width: 600px; /* Можно увеличить этот параметр */
+    height: auto; /* Сохраняет пропорции */
+    border-radius: 20px;
+}
+
+.about_content_wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: start;
+}
+
+.description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-align: start;
+}
+
+.highlight {
+    color: #ffcc00;
+}
+
+.call_button {
+    width: 180px;
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffe500;
+    border: none;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.counter_grid {
+    /*display: grid;*/
+    /*grid-template-columns: repeat(2, 1fr);*/
+    gap: 5px;
+    margin-top: 40px;
+    /*margin-right: 10px;*/
+    /*margin-left: 10px;*/
+}
+
+.single_counter {
+    width: 45%;
+    height: 100px;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.counter_wrapper {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.counter_wrapper p {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.counter_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.first_row {
+    margin-bottom: 20px;
+}
+
+.counter_top_left {
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.counter_top_right {
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.counter_bottom_left {
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.counter_bottom_right {
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .about_wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .counter_wrapper p {
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .call_button {
+        margin: auto;
+    }
+}

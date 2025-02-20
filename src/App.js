@@ -12,6 +12,7 @@ import {StepsSection} from "./components/Steps/StepsSection";
 import Form from "./components/Form/Form";
 import Footer from "./components/Footer/Footer";
 import Agreement from "./components/Agreement/Agreement";
+import About from "./components/About/About";
 
 
 
@@ -20,6 +21,7 @@ function App() {
       <div className="app-container">
         <Header />
         <HeroSection />
+          <About />
           <StepsSection />
         <Services />
         <Pricing />
