@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './HeroSection.module.css';
+import Modal from "../Modal/Modal";
 
 function HeroSection() {
-    const scrollToForm = () => {
-        const formSection = document.getElementById("application-form");
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    // const scrollToForm = () => {
+    //     const formSection = document.getElementById("application-form");
+    //     if (formSection) {
+    //         formSection.scrollIntoView({ behavior: "smooth" });
+    //     }
+    // };
 
     return (
         <section className={styles.hero}>
@@ -17,7 +23,7 @@ function HeroSection() {
                     <p>Получите заграничный паспорт быстро,<br /> легально и без проблем <br />с помощью нашей компании</p>
                 </div>
                 <div className={styles.infoBlocks}>
-                    <button onClick={scrollToForm} className={styles.primaryButton}>Оформить сейчас</button>
+                    <button onClick={openModal} className={styles.primaryButton}>Оформить сейчас</button>
                     <div className={styles.infoBlocks_row}>
                         <div className={styles.infoBlock}>
                             <h3>Полностью официальный метод оформления.</h3>
@@ -30,6 +36,7 @@ function HeroSection() {
                     </div>
                 </div>
             </div>
+            {isModalOpen && <Modal isOpen={isModalOpen} onClose={closeModal} />}
         </section>
     );
 }

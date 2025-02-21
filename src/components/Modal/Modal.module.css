@@ -87,6 +87,47 @@
     margin-bottom: 10px;
 }
 
+/* Стили для select */
+/* Стиль для select с правильным отступом справа */
+.select {
+    width: 100%;
+    padding: 12px;
+    padding-right: 40px; /* Оставляем место для стрелки */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    appearance: none; /* Включаем стандартную стрелку */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+
+    /* Перемещаем стрелку */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path fill='black' d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+
+    text-indent: 1px;
+    text-overflow: ellipsis;
+}
+
+
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .select {
+        font-size: 18px; /* Увеличиваем размер текста */
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .select-wrapper::after {
+        font-size: 16px; /* Увеличиваем размер стрелки */
+    }
+}
+
+
 /* Группа кнопок */
 .buttonGroup {
     display: flex;
@@ -540,8 +581,25 @@
         padding: 16px;
     }
 
+    .residenceGroup {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .switchLabel {
+        font-size: 12px;
+    }
+
     .passportContainer {
         flex-direction: column;
+    }
+
+    .priceLabel {
+        font-size: 11px;
+    }
+
+    .price {
+        font-size: 12px;
     }
 
     .contactContainer {

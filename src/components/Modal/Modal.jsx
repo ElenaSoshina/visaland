@@ -194,11 +194,13 @@ const Modal = ({ isOpen, onClose }) => {
 
                 <div className={styles.inputGroup}>
                     <label htmlFor="age">Возраст</label>
-                    <select id="age" value={selectedAge} className={styles.select} onChange={handleAgeChange}>
-                        <option>Взрослее 18 лет</option>
-                        <option>Дети до 14 лет</option>
-                        <option>Подростки от 14 до 18 лет</option>
-                    </select>
+                    <div className={styles.selectWrapper}>
+                        <select id="age" value={selectedAge} className={styles.select} onChange={handleAgeChange}>
+                            <option>Взрослее 18 лет</option>
+                            <option>Дети до 14 лет</option>
+                            <option>Подростки от 14 до 18 лет</option>
+                        </select>
+                    </div>
                 </div>
 
                 {/* Блок с переключателем госпошлины */}
@@ -213,13 +215,13 @@ const Modal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Итоговая стоимость */}
-                <div className={styles.totalPriceContainer}>
-                    <h3>Итого:</h3>
-                    <span className={styles.totalPrice}>{totalPrice} ₽</span>
-                    <p className={styles.dutyInfo}>
-                        {isDutyEnabled ? "с учетом госпошлины" : "без учета госпошлины"}
-                    </p>
-                </div>
+                {/*<div className={styles.totalPriceContainer}>*/}
+                {/*    <h3>Итого:</h3>*/}
+                {/*    <span className={styles.totalPrice}>{totalPrice} ₽</span>*/}
+                {/*    <p className={styles.dutyInfo}>*/}
+                {/*        {isDutyEnabled ? "с учетом госпошлины" : "без учета госпошлины"}*/}
+                {/*    </p>*/}
+                {/*</div>*/}
 
                 <div className={styles.passportContainer}>
                     {/* Секция Биометрический загранпаспорт */}
