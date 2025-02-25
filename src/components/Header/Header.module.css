@@ -1,3 +1,4 @@
+/* ========== Основные стили ========== */
 .header {
     position: fixed;
     top: 0;
@@ -6,21 +7,38 @@
     background-color: white;
     color: black;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     z-index: 1000;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.headerContainer {
+    max-width: 1450px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Логотип */
 .logo {
     font-size: 20px;
     font-weight: bold;
     display: flex;
     align-items: center;
+    margin-right: 20px;
 }
 
-/* VISA - на желтом фоне */
 .visa {
     background-color: #ffe500;
     color: black;
@@ -28,69 +46,190 @@
     border-radius: 4px;
 }
 
-/* LAND - обычный текст */
 .land {
     color: black;
     padding-left: 5px;
 }
 
+/* ========== Меню (Десктоп) ========== */
 .navLinks {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
+.navLinks li {
+    display: inline-block;
+}
+
 .navLinks li a {
     color: black;
     text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.2s ease;
 }
 
 .navLinks li a:hover {
     color: #ffc107;
 }
 
+/* ========== Бургер-меню (Мобильные) ========== */
 .burgerMenu {
     display: none;
-    font-size: 24px;
-    background: none;
+    position: relative;
+    width: 35px;
+    height: 28px;
+    background: transparent;
     border: none;
-    color: black;
     cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1100;
 }
 
-.noFixed {
-    position: static !important;
-    box-shadow: none;
+.burgerMenu .bar {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.burgerMenu .bar:not(:last-child) {
+    margin-bottom: 6px;
+}
+
+/* Анимация бургера в крестик */
+.opened .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.opened .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.opened .bar:nth-child(3) {
+    transform: translateY(-14px) rotate(-45deg);
+}
+
+/* Выпадающее меню (Мобильные) */
+/* Выпадающее меню */
+.mobileMenu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    padding: 15px 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+/* Показываем меню при открытии */
+.mobileMenu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Стилизация списка */
+.mobileMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobileMenu li {
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background 0.2s ease-in-out;
+}
+
+.mobileMenu li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Стили ссылок */
+.mobileMenu a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.mobileMenu li:hover {
+    background: #f9f9f9;
 }
 
 
-@media screen and (max-width: 768px) {
-    .burger-menu {
-        display: block;
-    }
+/* ========== Стили кнопок "Менеджер" ========== */
+.messengers {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
 
+.messengerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #f3f3f3;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Стили для текста "Менеджер" */
+.managerText {
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Размер и цвет иконок */
+.messengerButton .icon {
+    font-size: 20px;
+}
+
+.messengerButton[href*="telegram"] .icon {
+    color: #0088cc;
+}
+
+.messengerButton[href*="whatsapp"] .icon {
+    color: #25D366;
+}
+
+/* ========== Медиа-запросы ========== */
+@media screen and (max-width: 1024px) {
     .navLinks {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: white;
-        text-align: center;
-    }
-
-    .navLinks.open {
-        display: block;
-    }
-
-    .navLinks ul {
-        flex-direction: column;
-        padding: 10px 0;
+        display: none; /* Скрываем основное меню */
     }
 
     .burgerMenu {
+        display: flex; /* Показываем бургер-меню */
+    }
+
+    .mobileMenu {
         display: block;
-        position: absolute;
-        right: 10px;
+    }
+
+    .managerText {
+        display: none;
     }
 }

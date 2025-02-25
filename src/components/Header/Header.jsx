@@ -1,33 +1,72 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import Modal from "../Modal/Modal"; // Подключаем модальное окно
+import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Состояние модалки
+
+    // Функция для открытия/закрытия меню
+    const toggleMenu = () => {
+        setMenuOpen((prev) => !prev);
+    };
 
     return (
-        <>
-            <header className={`${styles.header} ${isModalOpen ? styles.noFixed : ""}`}>
-                <div className={styles.logo}>
-                    <span className={styles.visa}>VISA</span>
-                    <span className={styles.land}>LAND</span>
+        <header className={styles.header}>
+            <div className={styles.headerContainer}>
+                <div className={styles.leftSection}>
+                    <div className={styles.logo}>
+                        <span className={styles.visa}>VISA</span>
+                        <span className={styles.land}>LAND</span>
+                    </div>
+                    {/* Меню для десктопа */}
+                    <nav className={`${styles.navLinks} ${menuOpen ? styles.hideOnMobile : ""}`}>
+                        <ul>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/about">О компании</a></li>
+                            <li><a href="/services">Услуги</a></li>
+                            <li><a href="/prices">Цены</a></li>
+                            <li><a href="/contacts">Контакты</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <button className={styles.burgerMenu} onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-                <nav>
-                    <ul className={`${styles.navLinks} ${menuOpen ? styles.open : ""}`}>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/about">О компании</a></li>
-                        <li><a href="/services">Услуги</a></li>
-                        <li><a href="/prices">Цены</a></li>
-                        <li><a href="/contacts">Контакты</a></li>
-                    </ul>
-                </nav>
-            </header>
 
-            {/* Модальное окно */}
-            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
-        </>
+
+
+                <div className={styles.rightSection}>
+                    <div className={styles.messengers}>
+                        <a href="https://wa.me/your-whatsapp" className={styles.messengerButton}>
+                            <FaWhatsapp className={styles.icon} />
+                            <span className={styles.managerText}>Менеджер</span>
+                        </a>
+                        <a href="https://t.me/your-telegram" className={styles.messengerButton}>
+                            <FaTelegramPlane className={styles.icon} />
+                            <span className={styles.managerText}>Менеджер</span>
+                        </a>
+                    </div>
+
+                    {/* Бургер-меню для мобильных */}
+                    <button
+                        className={`${styles.burgerMenu} ${menuOpen ? styles.opened : ""}`}
+                        onClick={toggleMenu}
+                    >
+                        <span className={styles.bar}></span>
+                        <span className={styles.bar}></span>
+                        <span className={styles.bar}></span>
+                    </button>
+                </div>
+            </div>
+
+            {/* Выпадающее меню для мобильных */}
+            <nav className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
+                <ul>
+                    <li><a href="/" onClick={toggleMenu}>Главная</a></li>
+                    <li><a href="/about" onClick={toggleMenu}>О компании</a></li>
+                    <li><a href="/services" onClick={toggleMenu}>Услуги</a></li>
+                    <li><a href="/prices" onClick={toggleMenu}>Цены</a></li>
+                    <li><a href="/contacts" onClick={toggleMenu}>Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
     );
 };
 

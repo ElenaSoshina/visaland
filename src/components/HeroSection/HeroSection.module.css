@@ -1,13 +1,51 @@
+/* ========== Главная секция ========== */
+/* ========== Главная секция ========== */
 .hero {
-    background: linear-gradient(90deg, #FFE500 60%, #FFC107 90%);
-    color: #212121; /* Черный текст */
-    text-align: center;
-    padding: 120px 20px;
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    justify-content: start;
+    padding: 120px 5%;
+    min-height: 500px;
+
+    /* Градиент сверху + картинка на фоне */
+    background: linear-gradient(to right, rgba(255, 229, 0, 0.9) 20%, rgba(255, 229, 0.6, 0.6) 50%, rgba(255, 229, 0, 0.3) 70%, rgba(255, 229, 0, 0) 85%),
+    url('../../images/9498606.jpg');
+    background-size: contain;
+    background-position:right 1% top 10%;
+    background-repeat: no-repeat;
 }
+
+/* Контейнер с контентом */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+        min-height: auto; /* Убираем фиксированную высоту */
+
+        /* Центрируем и уменьшаем картинку */
+        background: linear-gradient(to bottom, rgba(255, 229, 0, 0.9) 0%, rgba(255, 229, 0, 0.7) 50%, rgba(255, 229, 0, 0.4) 80%, rgba(255, 229, 0, 0) 100%),
+        url('../../images/9498606.jpg');
+        background-size: 100%; /* Делаем изображение меньше */
+        background-position: center top 10%; /* Ставим его по центру */
+        background-repeat: no-repeat;
+    }
+}
+
+
 
 .container {
     max-width: 1200px;
@@ -102,7 +140,7 @@ p {
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 180px;
+        padding-top: 125px;
         padding-bottom: 20px;
     }
     h1 {
