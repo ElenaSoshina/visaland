@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/visaland/static/css/main.c386be3b.css",
-    "main.js": "/visaland/static/js/main.c5f39d27.js",
+    "main.js": "/visaland/static/js/main.c919fd6b.js",
     "static/media/vacation.png": "/visaland/static/media/vacation.e897c7b73d7c4282f747.png",
     "static/media/about.jpg": "/visaland/static/media/about.da62dfc0294fcd572b39.jpg",
     "static/media/9498606.jpg": "/visaland/static/media/9498606.4f3b2192d5868857547e.jpg",
     "index.html": "/visaland/index.html",
     "static/media/issue_doc.svg": "/visaland/static/media/issue_doc.69a6e87986dfa4eec54e22a096630ad4.svg",
     "main.c386be3b.css.map": "/visaland/static/css/main.c386be3b.css.map",
-    "main.c5f39d27.js.map": "/visaland/static/js/main.c5f39d27.js.map"
+    "main.c919fd6b.js.map": "/visaland/static/js/main.c919fd6b.js.map"
   },
   "entrypoints": [
     "static/css/main.c386be3b.css",
-    "static/js/main.c5f39d27.js"
+    "static/js/main.c919fd6b.js"
   ]
 }
