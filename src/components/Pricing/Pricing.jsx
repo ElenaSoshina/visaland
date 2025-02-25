@@ -6,25 +6,22 @@ import {FaCheck} from "react-icons/fa";
 const pricingData = [
     {
         id: 1,
-        title: "ЗАГРАНПАСПОРТ",
-        subtitle: "12-15 рабочих дней",
-        price: "15 000",
-        oldPrice: "20 000",
-        category: "Взрослый",
+        title: "Загранпаспорт стандартного образца",
+        subtitle: "2 рабочих дня",
+        price: "27 000",
+        oldPrice: "30 000",
+        category: "Детям до 14 лет",
         features: [
             "Оформление и заполнение анкеты",
-            "Консультация по необходимому пакету документов",
-            "Сопровождение",
-            "Отслеживание статуса готовности документа"
         ]
     },
     {
         id: 2,
-        title: "ЗАГРАНПАСПОРТ",
-        subtitle: "10-12 рабочих дней",
-        price: "17 500",
-        oldPrice: "22 000",
-        category: "Взрослый",
+        title: "Биометрический загранпаспорт",
+        subtitle: "24 рабочих дня",
+        price: "23 500",
+        oldPrice: "25 000",
+        category: "Для иногородних",
         features: [
             "Оформление и заполнение анкеты",
             "Консультация по необходимому пакету документов",
@@ -34,11 +31,11 @@ const pricingData = [
     },
     {
         id: 3,
-        title: "ЗАГРАНПАСПОРТ",
-        subtitle: "5-8 рабочих дней",
-        price: "13 000",
-        oldPrice: "15 000",
-        category: "Детский",
+        title: "Загранпаспорт стандартного образца",
+        subtitle: "7 рабочих дней",
+        price: "62 000",
+        oldPrice: "65 000",
+        category: "Взрослым от 18 лет",
         features: [
             "Оформление и заполнение анкеты",
             "Консультация по необходимому пакету документов",
@@ -62,7 +59,8 @@ function Pricing() {
                 {pricingData.map((plan) => (
                     <div key={plan.id} className={pricingStyles.pricingCard}>
                         {/*<span className={pricingStyles.discountLabel}>Акция</span>*/}
-                        <h3>{plan.title}</h3>
+                        <h3 className={pricingStyles.cardTitle}>{plan.title}</h3>
+                        <h4 className={pricingStyles.description}>{plan.category}</h4>
                         <hr className={pricingStyles.separator}/>
                         <div className={pricingStyles.priceContainer}>
                             <span className={pricingStyles.oldPrice}>₽{plan.oldPrice}</span>
