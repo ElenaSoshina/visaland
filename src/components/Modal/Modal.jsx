@@ -5,7 +5,7 @@ import styles from "./Modal.module.css";
 import {FaFingerprint} from "react-icons/fa";
 import passport from '../../images/icons8-герб-россии-50.png'
 import {IMaskInput} from "react-imask";
-import {sendMessageToMessenger} from "../utils/messengerUtils";
+import {sendMessageToTelegram} from "../utils/telegramAPI";
 
 const Modal = ({ isOpen, onClose }) => {
 
@@ -165,39 +165,39 @@ const Modal = ({ isOpen, onClose }) => {
         formData.consent &&
         selectedPassportType !== ""; // Услуга должна быть выбрана
 
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!selectedPassportType || !selectedDuration) {
             setErrors((prev) => ({
                 ...prev,
-                passportType: "Выберите тип паспорта и срок изготовления", // Устанавливаем ошибку
+                passportType: "Выберите тип паспорта и срок изготовления",
             }));
             return;
         }
 
-        // Если всё ок, очищаем ошибки
-        setErrors((prev) => ({
-            ...prev,
-            passportType: "",
-        }));
+        setErrors((prev) => ({ ...prev, passportType: "" }));
 
-        console.log("Форма успешно отправлена:", formData);
-        sendMessageToMessenger({
+        const formDataToSend = {
             name: formData.name,
             phone: formData.phone,
+            email: formData.email,
             passportType: selectedPassportType,
             duration: selectedDuration,
-            age: selectedAge,
             residence: selectedResidence,
             totalPrice: totalPrice,
-        });
+        };
+
+        const success = await sendMessageToTelegram(formDataToSend);
+
+        if (success) {
+            alert("Заявка успешно отправлена!");
+            setFormData({ name: "", phone: "", email: "", consent: true });
+            setTotalPrice(0);
+        } else {
+            alert("Ошибка при отправке заявки.");
+        }
     };
-
-
-
-
 
     if (!isOpen) return null;
 
