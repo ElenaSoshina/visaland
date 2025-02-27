@@ -5,7 +5,8 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import styles from "./Services.module.css";
-import {forwardRef} from "react";
+import {forwardRef, useState} from "react";
+import ServicesModal from "../ServicesModal/ServicesModal";
 
 const servicesData = [
     { id: 1, title: "Загранпаспорт срочно", description: "Уже более 20 лет мы занимаемся срочным оформлением загранпаспорта. Мы знаем все нюансы и подводные камни данного процесса.\n" +
@@ -22,6 +23,18 @@ const servicesData = [
 ];
 
 const Services = forwardRef((props, ref) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedService, setSelectedService] = useState(null);
+
+    const openModal = (service) => {
+        setSelectedService(service); // Сохраняем данные выбранной карточки
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setSelectedService(null);
+        setIsModalOpen(false);
+    };
     // const [visibleServices, setVisibleServices] = useState(4);
 
     // const showMoreServices = () => {
@@ -44,14 +57,15 @@ const Services = forwardRef((props, ref) => {
                         <motion.div
                             key={service.id}
                             className={styles.serviceCard}
-                            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                            transition={{ duration: 0.4 }}
+                            initial={{opacity: 0, y: 20, scale: 0.9}}
+                            animate={{opacity: 1, y: 0, scale: 1}}
+                            exit={{opacity: 0, y: -20, scale: 0.9}}
+                            transition={{duration: 0.4}}
                         >
                             <h3>{service.title}</h3>
                             <hr className={styles.separator}/>
                             <p>{service.description}</p>
+                            <button className={styles.moreBtn} onClick={() => openModal(service)}>Подробнее</button>
                         </motion.div>
                     ))}
                 </AnimatePresence>
@@ -71,6 +85,7 @@ const Services = forwardRef((props, ref) => {
                                 <h3>{service.title}</h3>
                                 <hr className={styles.separator}/>
                                 <p>{service.description}</p>
+                                <button className={styles.moreBtn} onClick={() => openModal(service)}>Подробнее</button>
                             </div>
                         </SwiperSlide>
                     ))}
@@ -87,6 +102,8 @@ const Services = forwardRef((props, ref) => {
             {/*        <button onClick={hideServices} className={styles.hideButton}>Скрыть</button>*/}
             {/*    )}*/}
             {/*</div>*/}
+
+            {isModalOpen && <ServicesModal isOpen={isModalOpen} onClose={closeModal} service={selectedService} />}
         </section>
     );
 })
