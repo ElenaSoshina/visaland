@@ -193,7 +193,6 @@ const Modal = ({ isOpen, onClose }) => {
         const success = await sendMessageToTelegram(formDataToSend);
 
         if (success) {
-            alert("Заявка успешно отправлена!");
             setIsPopupOpen(true)
             setFormData({ name: "", phone: "", email: "", consent: true });
             setTotalPrice(0);
