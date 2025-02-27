@@ -1,26 +1,21 @@
-import React, {forwardRef, useEffect, useRef, useState} from "react";
-import CountUp from "react-countup";
+import React, { forwardRef, useEffect, useRef } from "react";
 import styles from "./About.module.css";
-import aboutImage from "../../images/about.jpg";
 
 const About = forwardRef((props, ref) => {
     const sectionRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const [counterFinished, setCounterFinished] = useState(false);
 
     useEffect(() => {
-        const currentSection = sectionRef.current; // Сохраняем текущее значение ref
+        const currentSection = sectionRef.current;
 
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setIsVisible(true);
-                        observer.disconnect(); // Останавливаем отслеживание после первого появления
+                        observer.disconnect();
                     }
                 });
             },
-            { threshold: 0.5 } // Запуск анимации при 50% видимости секции
+            { threshold: 0.5 }
         );
 
         if (currentSection) {
@@ -34,118 +29,57 @@ const About = forwardRef((props, ref) => {
         };
     }, []);
 
-
-    const scrollToForm = () => {
-        const formSection = document.getElementById("application-form");
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
-
-
     return (
         <section ref={ref} id="about" className={styles.about_area}>
             <div className={styles.about_wrapper}>
-                <div className={styles.about_image_container}>
-                    <img src={aboutImage} alt="Команда VisaLand" className={styles.about_image} />
-                </div>
-                <div className={styles.about_content_wrapper}>
-                    <h3 className={styles.title}>
-                        О нас <br /> VisaLand в <span className={styles.highlight}>Цифрах</span>
-                    </h3>
-                    <p className={styles.description}>
-                        VisaLand – ваш надежный партнер в оформлении загранпаспортов. Мы предлагаем полный спектр
-                        услуг, от консультаций и подготовки документов до оперативной подачи и получения готового
-                        паспорта. Доверьте оформление профессионалам и избавьтесь от хлопот!
-                    </p>
-                    <button onClick={scrollToForm} className={styles.call_button}>
-                        Позвонить мне
-                    </button>
-                    <div className={styles.about_counter}>
-                        <div className={styles.counter_grid}>
-                            <div className={`${styles.counter_row} ${styles.first_row}`}>
-                                <div className={`${styles.single_counter} ${styles.counter_top_left}`}>
-                                    <div className={styles.counter_wrapper}>
-                                        <span className={styles.count}>
-                                            {isVisible ? (
-                                                <CountUp
-                                                    start={1}
-                                                    end={534}
-                                                    duration={3}
-                                                    onEnd={() => setCounterFinished(true)}
-                                                />
-                                            ) : counterFinished ? (
-                                                534
-                                            ) : (
-                                                1
-                                            )}
-                                        </span>
-                                        <p>Клиентов обслужено</p>
-                                    </div>
-                                </div>
-                                <div className={`${styles.single_counter} ${styles.counter_top_right}`}>
-                                    <div className={styles.counter_wrapper}>
-                                        <span className={styles.count}>
-                                            {isVisible ? (
-                                                <CountUp
-                                                    start={1}
-                                                    end={95}
-                                                    duration={3}
-                                                    onEnd={() => setCounterFinished(true)}
-                                                />
-                                            ) : counterFinished ? (
-                                                95
-                                            ) : (
-                                                1
-                                            )}
-                                        </span>
-                                        <p>Документов ежедневно</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={`${styles.counter_row} ${styles.second_row}`}>
-                                <div className={`${styles.single_counter} ${styles.counter_bottom_left}`}>
-                                    <div className={styles.counter_wrapper}>
-                                        <span className={styles.count}>
-                                            {isVisible ? (
-                                                <CountUp
-                                                    start={1}
-                                                    end={12}
-                                                    duration={3}
-                                                    onEnd={() => setCounterFinished(true)}
-                                                />
-                                            ) : counterFinished ? (
-                                                12
-                                            ) : (
-                                                1
-                                            )}
-                                        </span>
-                                        <p>Лет на рынке</p>
-                                    </div>
-                                </div>
-                                <div className={`${styles.single_counter} ${styles.counter_bottom_right}`}>
-                                    <div className={styles.counter_wrapper}>
-                                        <span className={styles.count}>
-                                            {isVisible ? (
-                                                <CountUp
-                                                    start={1}
-                                                    end={10}
-                                                    duration={3}
-                                                    onEnd={() => setCounterFinished(true)}
-                                                />
-                                            ) : counterFinished ? (
-                                                10
-                                            ) : (
-                                                1
-                                            )}
-                                        </span>
-                                        <p>Квалифицированных специалистов</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                {/* ✅ Блок "Как нас найти" */}
+                <div className={styles.map_section}>
+                    <h3 className={styles.section_title}>Как нас найти</h3>
+
+                    {/* ✅ Контактная информация */}
+                    <div className={styles.contact_info}>
+                        <p><strong>📍 Адрес:</strong> Москва, Тверская ул., 20, офис 1</p>
+                        <p><strong>📞 Телефон:</strong> <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+                        <p><strong>✉️ Email:</strong> <a href="mailto:info@visaland.ru">info@visaland.ru</a></p>
                     </div>
+
+                    {/* ✅ Карта */}
+                    <div className={styles.map_container}>
+                        <iframe
+                            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aee0b096fe0e11ae88bb0e3110109b955e1fd47ce82867962d81885d5a9a5edbe&ll=37.602373,55.766664&z=17"
+                            width="100%"
+                            height="450"
+                            frameBorder="0"
+                            allowFullScreen
+                            title="Офис VisaLand"
+                            style={{borderRadius: "10px", boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)"}}
+                        ></iframe>
+
+                    </div>
+                </div>
+
+                {/* ✅ Блок с отзывами (уменьшенная высота) */}
+                <div className={styles.reviews_container}>
+                    <h3 className={styles.title}>Отзывы клиентов</h3>
+                    <p className={styles.description}>
+                        Наши клиенты довольны сервисом и рекомендуют нас!
+                    </p>
+
+                    <div className={styles.reviews_widget}>
+                        <iframe
+                            style={{
+                                width: "100%",
+                                height: "520px", /* Ограниченная высота */
+                                border: "1px solid #e6e6e6",
+                                borderRadius: "8px",
+                                boxSizing: "border-box"
+                            }}
+                            src="https://yandex.ru/maps-reviews-widget/1080088379?comments"
+                            title="Отзывы Яндекс.Карты"
+                        ></iframe>
+                    </div>
+
                 </div>
             </div>
         </section>
