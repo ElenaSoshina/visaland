@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa";
+import {FaWhatsapp, FaTelegramPlane, FaMapMarkerAlt, FaPhoneAlt, FaRegClock} from "react-icons/fa";
 
 function Footer() {
     return (
@@ -13,18 +13,38 @@ function Footer() {
                     Быстрое и удобное оформление загранпаспорта без очередей и сложностей.
                 </p>
 
+                <div className={styles.infoBlocks}>
+                    <div className={styles.infoBlock}>
+                        <FaMapMarkerAlt className={styles.icon}/>
+                        <p>г. Москва, ул. Тверская, д. 20, стр. 1, 4 этаж, офис 401</p>
+                    </div>
+
+                    <div className={styles.infoBlock}>
+                        <FaPhoneAlt className={styles.icon}/>
+                        <p>Тел.: <a href="tel:+74952254266">+7 (495) 225-42-66</a></p>
+                        <p>Email: <a href="mailto:visaland@mail.ru">visaland@mail.ru</a></p>
+                    </div>
+
+                    <div className={styles.infoBlock}>
+                        <FaRegClock className={styles.icon}/>
+                        <p>Пн-Чт: 09:00 – 19:00</p>
+                        <p>Пт: 09:00 – 18:00</p>
+                        <p>Сб-Вс: Выходной</p>
+                    </div>
+                </div>
+
                 <h3 className={styles.messengerTitle}>Наши мессенджеры</h3>
                 <div className={styles.messengers}>
                     <a href="https://wa.me/your-whatsapp" className={styles.messengerButton}>
-                        <FaWhatsapp className={styles.icon} /> WhatsApp
+                        <FaWhatsapp className={styles.icon}/> WhatsApp
                     </a>
                     <a href="https://t.me/your-telegram" className={styles.messengerButton}>
-                        <FaTelegramPlane className={styles.icon} /> Telegram
+                        <FaTelegramPlane className={styles.icon}/> Telegram
                     </a>
                 </div>
 
                 <div className={styles.legal}>
-                    <p>© 2024 VISALAND — Оформление заграничных паспортов в России.</p>
+                    <p className={styles.legalText}>© VISALAND — Оформление заграничных паспортов в России.</p>
                     <a href="/privacy-policy" className={styles.link}>Политика конфиденциальности</a> |
                     <a href="/public-offer" className={styles.link}>Публичная оферта</a>
                 </div>

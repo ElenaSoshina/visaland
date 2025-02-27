@@ -8,7 +8,7 @@
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -30,6 +30,45 @@
     margin: 10px 0;
 }
 
+.infoBlocks {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.infoBlock {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+}
+
+.infoBlock p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.infoBlock a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.infoBlock a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Иконки */
+.icon {
+    font-size: 18px;
+    color: #ffe500;
+}
+
 .messengerTitle {
     font-size: 16px;
     font-weight: bold;
@@ -37,9 +76,11 @@
 }
 
 .messengers {
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 0 auto;
     margin-top: 10px;
 }
 
@@ -78,4 +119,41 @@
 
 .link:hover {
     text-decoration: underline;
+}
+
+.legalText {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .infoBlocks {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .infoBlock {
+        width: 90%;
+        justify-content: center;
+    }
+
+    .messengers {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .messengerButton {
+        width: 90%;
+    }
+
+    .description {
+        margin: 10px 19px;
+    }
 }
