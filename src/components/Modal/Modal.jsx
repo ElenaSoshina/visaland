@@ -5,6 +5,7 @@ import styles from "./Modal.module.css";
 import {FaFingerprint} from "react-icons/fa";
 import passport from '../../images/icons8-герб-россии-50.png'
 import {IMaskInput} from "react-imask";
+import {sendMessageToMessenger} from "../utils/messengerUtils";
 
 const Modal = ({ isOpen, onClose }) => {
 
@@ -183,7 +184,17 @@ const Modal = ({ isOpen, onClose }) => {
         }));
 
         console.log("Форма успешно отправлена:", formData);
+        sendMessageToMessenger({
+            name: formData.name,
+            phone: formData.phone,
+            passportType: selectedPassportType,
+            duration: selectedDuration,
+            age: selectedAge,
+            residence: selectedResidence,
+            totalPrice: totalPrice,
+        });
     };
+
 
 
 

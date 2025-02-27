@@ -19,8 +19,9 @@ const HeroSection = forwardRef((props, ref) => {
         <section ref={ref} className={styles.hero}>
             <div className={styles.container}>
                 <div className={styles.content}>
-                    <h1>Срочное оформление загранпаспорта в Москве</h1>
-                    <p>Получите заграничный паспорт быстро,<br /> легально и без проблем <br />с помощью нашей компании</p>
+                    <h1>Срочное оформление <span className={styles.bgHighlight}>загранпаспорта</span> в Москве</h1>
+
+                    <p>Получите заграничный паспорт быстро,<br/> легально и без проблем <br/>с помощью нашей компании</p>
                 </div>
                 <div className={styles.infoBlocks}>
                     <button onClick={openModal} className={styles.primaryButton}>Оформить сейчас</button>

@@ -87,8 +87,8 @@
 .burgerMenu {
     display: none;
     position: relative;
-    width: 35px;
-    height: 28px;
+    width: 25px;
+    height: 23px;
     background: transparent;
     border: none;
     cursor: pointer;
