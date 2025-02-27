@@ -31,15 +31,15 @@
 }
 
 .bgHighlight {
-    /*background: white;*/
-    /*color: black;*/
-    /*padding: 3px 6px;*/
-    /*border-radius: 4px;*/
+    background: white;
+    color: black;
+    padding: 3px 6px;
+    border-radius: 4px;
 
     /*font-style: italic; !* Курсив *!*/
     /*color: black; !* Контрастный цвет *!*/
     /*text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); !* Тень *!*/
-    font-weight: 600;
+    /*font-weight: 600;*/
 
 
 }
