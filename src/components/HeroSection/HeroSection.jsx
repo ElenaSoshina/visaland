@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {forwardRef, useState} from 'react';
 import styles from './HeroSection.module.css';
 import Modal from "../Modal/Modal";
 
-function HeroSection() {
+const HeroSection = forwardRef((props, ref) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
@@ -16,7 +16,7 @@ function HeroSection() {
     // };
 
     return (
-        <section className={styles.hero}>
+        <section ref={ref} className={styles.hero}>
             <div className={styles.container}>
                 <div className={styles.content}>
                     <h1>Срочное оформление загранпаспорта в Москве</h1>
@@ -39,6 +39,6 @@ function HeroSection() {
             {isModalOpen && <Modal isOpen={isModalOpen} onClose={closeModal} />}
         </section>
     );
-}
+});
 
 export default HeroSection;

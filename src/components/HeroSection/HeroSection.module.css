@@ -1,6 +1,7 @@
 /* ========== Главная секция ========== */
 /* ========== Главная секция ========== */
 .hero {
+    margin-top: 25px;
     position: relative;
     display: flex;
     align-items: center;
@@ -141,6 +142,7 @@ p {
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
     .hero {
+        margin-top: 0;
         padding-top: 125px;
         padding-bottom: 20px;
     }

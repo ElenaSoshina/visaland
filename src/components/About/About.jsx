@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 import CountUp from "react-countup";
 import styles from "./About.module.css";
 import aboutImage from "../../images/about.jpg";
 
-const About = () => {
+const About = forwardRef((props, ref) => {
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
     const [counterFinished, setCounterFinished] = useState(false);
@@ -42,8 +42,10 @@ const About = () => {
         }
     };
 
+
+
     return (
-        <section id="about" className={styles.about_area} ref={sectionRef}>
+        <section ref={ref} id="about" className={styles.about_area}>
             <div className={styles.about_wrapper}>
                 <div className={styles.about_image_container}>
                     <img src={aboutImage} alt="Команда VisaLand" className={styles.about_image} />
@@ -148,6 +150,6 @@ const About = () => {
             </div>
         </section>
     );
-};
+});
 
 export default About;

@@ -5,6 +5,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import styles from "./Services.module.css";
+import {forwardRef} from "react";
 
 const servicesData = [
     { id: 1, title: "Загранпаспорт срочно", description: "Уже более 20 лет мы занимаемся срочным оформлением загранпаспорта. Мы знаем все нюансы и подводные камни данного процесса.\n" +
@@ -20,7 +21,7 @@ const servicesData = [
     // { id: 10, title: "Услуга 10", description: "Описание услуги 10. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, aperiam" }
 ];
 
-function Services() {
+const Services = forwardRef((props, ref) => {
     // const [visibleServices, setVisibleServices] = useState(4);
 
     // const showMoreServices = () => {
@@ -32,7 +33,7 @@ function Services() {
     // };
 
     return (
-        <section className={styles.servicesSection}>
+        <section ref={ref} className={styles.servicesSection}>
             <h2>Наши услуги</h2>
             <p className={styles.description}>Наша компания оказывает все услуги для того, чтобы ускорить и облегчить процесс получения загранпаспорта.</p>
 
@@ -88,6 +89,6 @@ function Services() {
             {/*</div>*/}
         </section>
     );
-}
+})
 
 export { Services };

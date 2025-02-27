@@ -1,8 +1,8 @@
-import React from "react";
+import React, {forwardRef} from "react";
 import { useForm } from "react-hook-form";
 import styles from "./Form.module.css";
 
-function Form() {
+const Form = forwardRef((props, ref) => {
     const {
         register,
         handleSubmit,
@@ -14,7 +14,7 @@ function Form() {
     };
 
     return (
-        <section id="application-form" className={styles.formSection}>
+        <section ref={ref} id="application-form" className={styles.formSection}>
             <div className={styles.container}>
                 <h2 className={styles.title}>
                     Оформите загранпаспорт без очередей и лишних хлопот
@@ -63,6 +63,6 @@ function Form() {
             </div>
         </section>
     );
-}
+})
 
 export default Form;

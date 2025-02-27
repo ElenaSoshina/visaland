@@ -1,4 +1,4 @@
-import React from "react";
+import React, {forwardRef} from "react";
 import pricingStyles from "./Pricing.module.css";
 import {FaCheck} from "react-icons/fa";
 
@@ -45,7 +45,7 @@ const pricingData = [
     }
 ];
 
-function Pricing() {
+const Pricing = forwardRef((props, ref) => {
     const scrollToForm = () => {
         const formSection = document.getElementById("application-form");
         if (formSection) {
@@ -53,7 +53,7 @@ function Pricing() {
         }
     };
     return (
-        <section className={pricingStyles.pricingSection}>
+        <section ref={ref} className={pricingStyles.pricingSection}>
             <h2 className={pricingStyles.title}>Спецпредложения</h2>
             <div className={pricingStyles.pricingContainer}>
                 {pricingData.map((plan) => (
@@ -84,6 +84,6 @@ function Pricing() {
             </div>
         </section>
     );
-}
+})
 
 export { Pricing };
