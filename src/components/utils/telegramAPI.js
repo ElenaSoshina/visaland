@@ -18,6 +18,7 @@ export async function sendMessageToTelegram(formData) {
 
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
+
     try {
         const response = await fetch(url, {
             method: "POST",

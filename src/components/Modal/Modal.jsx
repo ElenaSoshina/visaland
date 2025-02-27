@@ -20,6 +20,8 @@ const Modal = ({ isOpen, onClose }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [formData, setFormData] = useState({ name: "", email: "", phone: "", consent: true });
     const [errors, setErrors] = useState({ name: "", email: "", phone: "" });
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
     const validatePhone = (phone) => phone.replace(/\D/g, "").length === 11;
 
@@ -192,11 +194,19 @@ const Modal = ({ isOpen, onClose }) => {
 
         if (success) {
             alert("Заявка успешно отправлена!");
+            setIsPopupOpen(true)
             setFormData({ name: "", phone: "", email: "", consent: true });
             setTotalPrice(0);
         } else {
             alert("Ошибка при отправке заявки.");
         }
+    };
+
+    const handlePopupClose = () => {
+        setIsPopupOpen(false);
+        onClose(); // Закрыть модальное окно
+        setFormData({ name: "", phone: "", email: "", consent: true });
+        setTotalPrice(0);
     };
 
     if (!isOpen) return null;
@@ -436,6 +446,23 @@ const Modal = ({ isOpen, onClose }) => {
                     </div>
                 </div>
             </motion.div>
+
+            {isPopupOpen && (
+                <div className={styles.popupOverlay}>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        className={styles.popup}
+                    >
+                        <h3>Заявка отправлена!</h3>
+                        <p>С Вами свяжутся в ближайшее время.</p>
+                        <button className={styles.popupButton} onClick={handlePopupClose}>
+                            ОК
+                        </button>
+                    </motion.div>
+                </div>
+            )}
         </div>
     );
 };
