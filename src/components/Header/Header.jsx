@@ -65,17 +65,24 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
 
                 <div className={styles.rightSection}>
                     <div className={styles.messengers}>
-                        <a href="https://wa.me/your-whatsapp" className={styles.messengerButton}>
+                        {/* WhatsApp */}
+                        <a href="https://wa.me/79017356401" className={`${styles.messengerButton} ${styles.whatsapp}`}
+                           target="_blank" rel="noopener noreferrer">
                             <FaWhatsapp className={styles.icon}/>
                             <span className={styles.managerText}>Менеджер</span>
                         </a>
-                        <a href="https://t.me/your-telegram" className={styles.messengerButton}>
+
+                        {/* Telegram */}
+                        <a href="https://t.me/+79017356401" className={`${styles.messengerButton} ${styles.telegram}`}
+                           target="_blank" rel="noopener noreferrer">
                             <FaTelegramPlane className={styles.icon}/>
                             <span className={styles.managerText}>Менеджер</span>
                         </a>
                     </div>
 
-                    <button className={`${styles.burgerMenu} ${menuOpen ? styles.opened : ""}`} onClick={() => setMenuOpen(!menuOpen)}>
+
+                    <button className={`${styles.burgerMenu} ${menuOpen ? styles.opened : ""}`}
+                            onClick={() => setMenuOpen(!menuOpen)}>
                         <span className={styles.bar}></span>
                         <span className={styles.bar}></span>
                         <span className={styles.bar}></span>
@@ -85,7 +92,12 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
 
             <nav className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}>
                 <ul>
-                    <li><button onClick={(e) => { e.preventDefault(); scrollToSection(homeRef); }}>Главная</button></li>
+                    <li>
+                        <button onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection(homeRef);
+                        }}>Главная
+                        </button></li>
                     <li><button onClick={(e) => { e.preventDefault(); scrollToSection(pricesRef); }}>Цены</button></li>
                     <li><button onClick={(e) => { e.preventDefault(); scrollToSection(servicesRef); }}>Услуги</button></li>
                     <li><button onClick={(e) => { e.preventDefault(); scrollToSection(aboutRef); }}>О компании</button></li>

@@ -224,13 +224,16 @@
     font-size: 20px;
 }
 
-.messengerButton[href*="telegram"] .icon {
+/* ✅ WhatsApp (зеленый цвет) */
+.whatsapp .icon {
+    color: #25D366;
+}
+
+/* ✅ Telegram (голубой цвет) */
+.telegram .icon {
     color: #0088cc;
 }
 
-.messengerButton[href*="whatsapp"] .icon {
-    color: #25D366;
-}
 
 /* ========== Медиа-запросы ========== */
 @media screen and (max-width: 1024px) {

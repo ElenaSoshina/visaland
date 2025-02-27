@@ -35,10 +35,10 @@ function Footer() {
 
                 <h3 className={styles.messengerTitle}>Наши мессенджеры</h3>
                 <div className={styles.messengers}>
-                    <a href="https://wa.me/your-whatsapp" className={styles.messengerButton}>
+                    <a href="https://wa.me/79017356401" className={styles.messengerButton}>
                         <FaWhatsapp className={styles.icon}/> WhatsApp
                     </a>
-                    <a href="https://t.me/your-telegram" className={styles.messengerButton}>
+                    <a href="https://t.me/+79017356401" className={styles.messengerButton}>
                         <FaTelegramPlane className={styles.icon}/> Telegram
                     </a>
                 </div>
