@@ -47,7 +47,8 @@ const About = forwardRef((props, ref) => {
                     {/* ✅ Карта */}
                     <div className={styles.map_container}>
                         <iframe
-                            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aee0b096fe0e11ae88bb0e3110109b955e1fd47ce82867962d81885d5a9a5edbe&ll=37.602373,55.766664&z=17"
+                            // src="https://yandex.ru/map-widget/v1/?um=constructor%3Aee0b096fe0e11ae88bb0e3110109b955e1fd47ce82867962d81885d5a9a5edbe&ll=37.602373,55.766664&z=17"
+                            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aee0b096fe0e11ae88bb0e3110109b955e1fd47ce82867962d81885d5a9a5edbe&amp;source=constructor"
                             width="100%"
                             height="450"
                             frameBorder="0"
