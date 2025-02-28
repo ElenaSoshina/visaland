@@ -1,6 +1,6 @@
-const BOT_TOKEN = "8120391231:AAESkgyQ1_97rkPYuZlBsfRB_5l2PVG74HE\n"; // Токен бота
+const BOT_TOKEN = "8120391231:AAESkgyQ1_97rkPYuZlBsfRB_5l2PVG74HE"; // Токен бота
 const ADMIN_CHAT_ID = "8175921251"; // ID администратора
-const TEST_CHAT_ID = '522814078'
+const TEST_CHAT_ID = "522814078";
 
 export async function sendMessageToTelegram(formData) {
     const isTest = formData.name.toLowerCase().includes("test");
@@ -8,16 +8,22 @@ export async function sendMessageToTelegram(formData) {
 
     let text = `📌 **Новая заявка с сайта**:\n`;
 
+    // Если указаны только имя и телефон — это заявка на консультацию
+    const hasOnlyNameAndPhone = formData.name && formData.phone && !formData.service && !formData.passportType && !formData.duration && !formData.residence && formData.totalPrice === undefined;
+
+    if (hasOnlyNameAndPhone) {
+        text += `📞 *Заявка на консультацию*\n`;
+    }
+
     if (formData.service) text += `🛠 *Услуга*: ${formData.service}\n`;
     if (formData.name) text += `👤 *Имя*: ${formData.name}\n`;
     if (formData.phone) text += `📞 *Телефон*: ${formData.phone}\n`;
     if (formData.passportType) text += `🛂 *Тип паспорта*: ${formData.passportType}\n`;
     if (formData.duration) text += `⏳ *Срок выполнения*: ${formData.duration}\n`;
     if (formData.residence) text += `📍 *Регистрация*: ${formData.residence}\n`;
-    if (formData.totalPrice !== undefined) text += `💰 *Стоимость*: ${formData.totalPrice} ₽\n`;
+    if (formData.totalPrice !== undefined && formData.totalPrice !== 0) text += `💰 *Стоимость*: ${formData.totalPrice} ₽\n`;
 
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
 
     try {
         const response = await fetch(url, {

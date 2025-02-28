@@ -37,6 +37,8 @@ const Form = forwardRef((props, ref) => {
         setIsPopupOpen(false);
     };
 
+    const validatePhone = (phone) => phone.replace(/\D/g, "").length === 11;
+
     return (
         <section ref={ref} id="application-form" className={styles.formSection}>
             <div className={styles.container}>
@@ -64,10 +66,7 @@ const Form = forwardRef((props, ref) => {
                         className={styles.input}
                         {...register("phone", {
                             required: "Введите ваш телефон",
-                            pattern: {
-                                value: /^\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}$/,
-                                message: "Введите корректный номер телефона"
-                            }
+                            validate: (value) => validatePhone(value) || "Введите корректный номер телефона"
                         })}
                     />
                     {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
