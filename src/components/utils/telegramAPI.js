@@ -6,15 +6,15 @@ export async function sendMessageToTelegram(formData) {
     const isTest = formData.name.toLowerCase().includes("test");
     const chatId = isTest ? TEST_CHAT_ID : ADMIN_CHAT_ID;
 
-    const text = `
-📌 **Новая заявка с сайта**:
-👤 *Имя*: ${formData.name}
-📞 *Телефон*: ${formData.phone}
-🛂 *Тип паспорта*: ${formData.passportType || "Не выбран"}
-⏳ *Срок выполнения*: ${formData.duration || "Не выбран"}
-📍 *Регистрация*: ${formData.residence || "Не указана"}
-💰 *Стоимость*: ${formData.totalPrice} ₽
-    `;
+    let text = `📌 **Новая заявка с сайта**:\n`;
+
+    if (formData.service) text += `🛠 *Услуга*: ${formData.service}\n`;
+    if (formData.name) text += `👤 *Имя*: ${formData.name}\n`;
+    if (formData.phone) text += `📞 *Телефон*: ${formData.phone}\n`;
+    if (formData.passportType) text += `🛂 *Тип паспорта*: ${formData.passportType}\n`;
+    if (formData.duration) text += `⏳ *Срок выполнения*: ${formData.duration}\n`;
+    if (formData.residence) text += `📍 *Регистрация*: ${formData.residence}\n`;
+    if (formData.totalPrice !== undefined) text += `💰 *Стоимость*: ${formData.totalPrice} ₽\n`;
 
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
