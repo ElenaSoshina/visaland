@@ -39,9 +39,9 @@ const About = forwardRef((props, ref) => {
 
                     {/* ✅ Контактная информация */}
                     <div className={styles.contact_info}>
-                        <p><strong>📍 Адрес:</strong> Москва, Тверская ул., 20, офис 1</p>
-                        <p><strong>📞 Телефон:</strong> <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
-                        <p><strong>✉️ Email:</strong> <a href="mailto:info@visaland.ru">info@visaland.ru</a></p>
+                        <p><strong>📍 Адрес:</strong> г. Москва ул. Тверская д 20 стр.1, 4 этаж, офис 401А</p>
+                        <p><strong>📞 Телефон:</strong> <a href="tel:+74951234567">+7 (495) 225-42-66</a>, <a href="tel:+79017356401">+7 (901) 735-64-01</a></p>
+                        <p><strong>✉️ Email:</strong> <a href="mailto:visaland@mail.ru"> visaland@mail.ru</a></p>
                     </div>
 
                     {/* ✅ Карта */}

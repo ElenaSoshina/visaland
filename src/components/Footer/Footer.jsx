@@ -27,8 +27,7 @@ function Footer() {
 
                     <div className={styles.infoBlock}>
                         <FaRegClock className={styles.icon}/>
-                        <p>Пн-Чт: 09:00 – 19:00</p>
-                        <p>Пт: 09:00 – 18:00</p>
+                        <p>Пн-Пт: 10:00 – 18:00</p>
                         <p>Сб-Вс: Выходной</p>
                     </div>
                 </div>
