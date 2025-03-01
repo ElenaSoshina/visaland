@@ -187,6 +187,7 @@ const Modal = ({ isOpen, onClose }) => {
             passportType: selectedPassportType,
             duration: selectedDuration,
             residence: selectedResidence,
+            age: selectedAge,
             totalPrice: totalPrice,
         };
 
