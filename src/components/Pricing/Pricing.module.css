@@ -33,6 +33,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .pricingCard {
@@ -127,18 +128,57 @@
     font-size: 10px;
 }
 
+.primaryButton {
+    width: 30%;
+    background-color: #ffe500;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.primaryButton:hover {
+    background-color: #e0a800;
+}
+
+@media (max-width: 1024px) {
+    .primaryButton {
+        width: 40%;
+    }
+}
+
 @media (max-width: 900px) {
     .pricingContainer {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .pricingContainer .pricingCard:nth-child(3) {
+        grid-column: 1 / -1; /* Занимает всю ширину */
+        justify-self: center; /* Центрирование */
+        max-width: 50%; /* Ограничение ширины */
     }
 
     .title {
         font-size: 34px;
+    }
+
+    .primaryButton {
+        width: 60%;
     }
 }
 
 @media (max-width: 600px) {
     .pricingContainer {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .primaryButton {
+        width: 70%;
     }
 }

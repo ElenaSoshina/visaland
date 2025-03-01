@@ -1,6 +1,8 @@
-import React, {forwardRef} from "react";
+import React, {forwardRef, useState} from "react";
 import pricingStyles from "./Pricing.module.css";
 import {FaCheck} from "react-icons/fa";
+import styles from "../Agreement/Agreement.module.css";
+import Modal from "../Modal/Modal";
 
 
 const pricingData = [
@@ -46,6 +48,10 @@ const pricingData = [
 ];
 
 const Pricing = forwardRef((props, ref) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     const scrollToForm = () => {
         const formSection = document.getElementById("application-form");
         if (formSection) {
@@ -82,8 +88,13 @@ const Pricing = forwardRef((props, ref) => {
                     </div>
                 ))}
             </div>
+            <button className={styles.primaryButton} onClick={openModal}>
+                Все предложения
+            </button>
+            {isModalOpen && <Modal isOpen={isModalOpen} onClose={closeModal} />}
         </section>
+
     );
 })
 
-export { Pricing };
+export {Pricing};
