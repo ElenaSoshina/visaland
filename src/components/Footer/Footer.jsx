@@ -4,6 +4,18 @@ import { FaWhatsapp, FaTelegramPlane, FaMapMarkerAlt, FaPhoneAlt, FaRegClock } f
 import PrivacyPolicyModal from "../PrivacyPolicyModal/PrivacyPolicyModal";
 import PublicOfferModal from "../PublicOfferModal/PublicOfferModal";
 
+
+const trackUptolike = (platform) => {
+    if (window.uptolike && window.uptolike.trackEvent) {
+        window.uptolike.trackEvent("click", {
+            category: "Social",
+            action: "Share",
+            label: platform
+        });
+    }
+};
+
+
 function Footer() {
     const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
     const [isPublicOfferOpen, setIsPublicOfferOpen] = useState(false);
@@ -39,10 +51,10 @@ function Footer() {
 
                 <h3 className={styles.messengerTitle}>Наши мессенджеры</h3>
                 <div className={styles.messengers}>
-                    <a href="https://wa.me/79017356401" className={styles.messengerButton}>
+                    <a href="https://wa.me/79017356401" className={styles.messengerButton} onClick={() => trackUptolike("WhatsApp")}>
                         <FaWhatsapp className={styles.icon}/> WhatsApp
                     </a>
-                    <a href="https://t.me/+79017356401" className={styles.messengerButton}>
+                    <a href="https://t.me/+79017356401" className={styles.messengerButton} onClick={() => trackUptolike("Telegram")}>
                         <FaTelegramPlane className={styles.icon}/> Telegram
                     </a>
                 </div>

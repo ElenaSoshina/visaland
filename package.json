@@ -2,7 +2,6 @@
   "name": "visaland",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ElenaSoshina.github.io/visaland",
   "dependencies": {
     "cra-template": "1.2.0",
     "framer-motion": "^12.4.2",

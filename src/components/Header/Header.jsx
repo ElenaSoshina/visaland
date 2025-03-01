@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import styles from "./Header.module.css";
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 
+
+const trackUptolike = (platform) => {
+    if (window.uptolike && window.uptolike.trackEvent) {
+        window.uptolike.trackEvent("click", {
+            category: "Social",
+            action: "Share",
+            label: platform
+        });
+    }
+};
+
 const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRef }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -11,7 +22,6 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
         }
         setMenuOpen(false); // Закрываем меню после клика
     };
-
 
 
     return (
@@ -67,14 +77,14 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
                     <div className={styles.messengers}>
                         {/* WhatsApp */}
                         <a href="https://wa.me/79017356401" className={`${styles.messengerButton} ${styles.whatsapp}`}
-                           target="_blank" rel="noopener noreferrer">
+                           target="_blank" rel="noopener noreferrer" onClick={() => trackUptolike("WhatsApp")}>
                             <FaWhatsapp className={styles.icon}/>
                             <span className={styles.managerText}>Менеджер</span>
                         </a>
 
                         {/* Telegram */}
                         <a href="https://t.me/+79017356401" className={`${styles.messengerButton} ${styles.telegram}`}
-                           target="_blank" rel="noopener noreferrer">
+                           target="_blank" rel="noopener noreferrer" onClick={() => trackUptolike("Telegram")}>
                             <FaTelegramPlane className={styles.icon}/>
                             <span className={styles.managerText}>Менеджер</span>
                         </a>
