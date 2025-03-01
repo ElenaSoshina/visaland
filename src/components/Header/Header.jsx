@@ -49,14 +49,14 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
                                 <button onClick={(e) => {
                                     e.preventDefault();
                                     scrollToSection(aboutRef);
-                                }}>О компании
+                                }}>Контакты
                                 </button>
                             </li>
                             <li>
                                 <button onClick={(e) => {
                                     e.preventDefault();
                                     scrollToSection(formRef);
-                                }}>Контакты
+                                }}>Оставить заявку
                                 </button>
                             </li>
                         </ul>
@@ -100,8 +100,8 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
                         </button></li>
                     <li><button onClick={(e) => { e.preventDefault(); scrollToSection(pricesRef); }}>Цены</button></li>
                     <li><button onClick={(e) => { e.preventDefault(); scrollToSection(servicesRef); }}>Услуги</button></li>
-                    <li><button onClick={(e) => { e.preventDefault(); scrollToSection(aboutRef); }}>О компании</button></li>
-                    <li><button onClick={(e) => { e.preventDefault(); scrollToSection(formRef); }}>Контакты</button></li>
+                    <li><button onClick={(e) => { e.preventDefault(); scrollToSection(aboutRef); }}>Контакты</button></li>
+                    <li><button onClick={(e) => { e.preventDefault(); scrollToSection(formRef); }}>Оставить заявку</button></li>
                 </ul>
             </nav>
         </header>
