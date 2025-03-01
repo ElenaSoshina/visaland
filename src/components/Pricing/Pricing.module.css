@@ -162,7 +162,6 @@
     .pricingContainer .pricingCard:nth-child(3) {
         grid-column: 1 / -1; /* Занимает всю ширину */
         justify-self: center; /* Центрирование */
-        max-width: 50%; /* Ограничение ширины */
     }
 
     .title {
