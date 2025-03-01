@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Footer.module.css";
-import {FaWhatsapp, FaTelegramPlane, FaMapMarkerAlt, FaPhoneAlt, FaRegClock} from "react-icons/fa";
+import { FaWhatsapp, FaTelegramPlane, FaMapMarkerAlt, FaPhoneAlt, FaRegClock } from "react-icons/fa";
+import PrivacyPolicyModal from "../PrivacyPolicyModal/PrivacyPolicyModal";
+import PublicOfferModal from "../PublicOfferModal/PublicOfferModal";
 
 function Footer() {
+    const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+    const [isPublicOfferOpen, setIsPublicOfferOpen] = useState(false);
+
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
@@ -44,10 +49,14 @@ function Footer() {
 
                 <div className={styles.legal}>
                     <p className={styles.legalText}>© VISALAND — Оформление заграничных паспортов в России.</p>
-                    <a href="/privacy-policy" className={styles.link}>Политика конфиденциальности</a> |
-                    <a href="/public-offer" className={styles.link}>Публичная оферта</a>
+                    <button className={styles.link} onClick={() => setIsPrivacyOpen(true)}>Политика конфиденциальности</button> |
+                    <button className={styles.link} onClick={() => setIsPublicOfferOpen(true)}>Публичная оферта</button>
                 </div>
             </div>
+
+            {/* Модальные окна */}
+            {isPrivacyOpen && <PrivacyPolicyModal onClose={() => setIsPrivacyOpen(false)} />}
+            {isPublicOfferOpen && <PublicOfferModal onClose={() => setIsPublicOfferOpen(false)} />}
         </footer>
     );
 }
