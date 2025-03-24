@@ -80,7 +80,9 @@ const ServicesModal = ({ isOpen, onClose, service }) => {
                     <div className={styles.passportHeader}>
                         <h3>{service.title}</h3>
                     </div>
-                    <p>{service.description}</p>
+                    <div
+                        dangerouslySetInnerHTML={{__html: service.modalDescription}}
+                    />
                 </div>
 
                 {/* Форма */}

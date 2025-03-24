@@ -57,7 +57,13 @@
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
+}
+
+.passportBox p,
+.passportBox ul,
+.passportBox li {
+    font-size: 16px;
 }
 
 /* Заголовок паспорта */
@@ -69,7 +75,7 @@
 
 /* Описание паспорта */
 .passportBox p {
-    font-size: 14px;
+    font-size: 16px;
     color: #333;
 }
 
