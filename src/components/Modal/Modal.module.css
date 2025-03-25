@@ -20,7 +20,7 @@
     position: relative;
     max-height: 75vh;
     overflow-y: auto;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 /* Кнопка закрытия */
@@ -577,7 +577,7 @@
     .modal {
         width: 95%;
         max-width: 500px;
-        max-height: 85vh;
+        max-height: 80vh;
         padding: 16px;
     }
 
