@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.e1fa445b.css",
+    "main.css": "/static/css/main.62ffbefb.css",
     "main.js": "/static/js/main.0d761c95.js",
     "static/media/vacation.png": "/static/media/vacation.e897c7b73d7c4282f747.png",
     "static/media/9498606.jpg": "/static/media/9498606.4f3b2192d5868857547e.jpg",
     "index.html": "/index.html",
     "static/media/issue_doc.svg": "/static/media/issue_doc.69a6e87986dfa4eec54e22a096630ad4.svg",
-    "main.e1fa445b.css.map": "/static/css/main.e1fa445b.css.map",
+    "main.62ffbefb.css.map": "/static/css/main.62ffbefb.css.map",
     "main.0d761c95.js.map": "/static/js/main.0d761c95.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1fa445b.css",
+    "static/css/main.62ffbefb.css",
     "static/js/main.0d761c95.js"
   ]
 }
