@@ -38,7 +38,7 @@ function Footer() {
 
                     <div className={styles.infoBlock}>
                         <FaPhoneAlt className={styles.icon}/>
-                        <p>Тел.: <a href="tel:+74952254266">+7 (495) 225-42-66</a></p>
+                        <p>Тел.: <a href="tel:+74991363808">+7 (499) 136-38-08</a></p>
                         <p>Email: <a href="mailto:visaland@mail.ru">visaland@mail.ru</a></p>
                     </div>
 
@@ -51,10 +51,10 @@ function Footer() {
 
                 <h3 className={styles.messengerTitle}>Наши мессенджеры</h3>
                 <div className={styles.messengers}>
-                    <a href="https://wa.me/79017356401" className={styles.messengerButton} onClick={() => trackUptolike("WhatsApp")}>
+                    <a href="https://wa.me/79031363808" className={styles.messengerButton} onClick={() => trackUptolike("WhatsApp")}>
                         <FaWhatsapp className={styles.icon}/> WhatsApp
                     </a>
-                    <a href="https://t.me/+79017356401" className={styles.messengerButton} onClick={() => trackUptolike("Telegram")}>
+                    <a href="https://t.me/+79031363808" className={styles.messengerButton} onClick={() => trackUptolike("Telegram")}>
                         <FaTelegramPlane className={styles.icon}/> Telegram
                     </a>
                 </div>

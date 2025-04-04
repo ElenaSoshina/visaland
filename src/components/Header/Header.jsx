@@ -76,14 +76,14 @@ const Header = ({ homeRef, pricesRef, servicesRef, aboutRef, contactsRef, formRe
                 <div className={styles.rightSection}>
                     <div className={styles.messengers}>
                         {/* WhatsApp */}
-                        <a href="https://wa.me/79017356401" className={`${styles.messengerButton} ${styles.whatsapp}`}
+                        <a href="https://wa.me/79031363808" className={`${styles.messengerButton} ${styles.whatsapp}`}
                            target="_blank" rel="noopener noreferrer" onClick={() => trackUptolike("WhatsApp")}>
                             <FaWhatsapp className={styles.icon}/>
                             <span className={styles.managerText}>Менеджер</span>
                         </a>
 
                         {/* Telegram */}
-                        <a href="https://t.me/+79017356401" className={`${styles.messengerButton} ${styles.telegram}`}
+                        <a href="https://t.me/+79031363808" className={`${styles.messengerButton} ${styles.telegram}`}
                            target="_blank" rel="noopener noreferrer" onClick={() => trackUptolike("Telegram")}>
                             <FaTelegramPlane className={styles.icon}/>
                             <span className={styles.managerText}>Менеджер</span>
