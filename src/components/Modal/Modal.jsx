@@ -23,7 +23,7 @@ const Modal = ({ isOpen, onClose }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-    const validatePhone = (phone) => phone.replace(/\D/g, "").length === 11;
+    const validatePhone = (phone) => phone.replace(/\D/g, "").length === 12;
 
     const bioPricesAdult = [
         { label: "5 раб. день", price: 86000 },
@@ -182,7 +182,7 @@ const Modal = ({ isOpen, onClose }) => {
 
         const formDataToSend = {
             name: formData.name,
-            phone: formData.phone,
+            phone: `+${formData.phone}`,
             email: formData.email,
             passportType: selectedPassportType,
             duration: selectedDuration,
@@ -254,16 +254,6 @@ const Modal = ({ isOpen, onClose }) => {
                     </div>
                 </div>
 
-        {/*        /!* Блок с переключателем госпошлины *!/*/}
-        {/*        <div className={styles.inputGroup}>*/}
-        {/*            <label>Включить госпошлину</label>*/}
-        {/*            <div className={styles.switchContainer}>*/}
-        {/*                <div className={isDutyEnabled ? styles.switchActive : styles.switchInactive}></div>*/}
-        {/*                <span className={styles.switchLabel}>*/}
-        {/*    {isDutyEnabled ? "Оплачивается самостоятельно, расскажем как." : ""}*/}
-        {/*</span>*/}
-        {/*            </div>*/}
-        {/*        </div>*/}
 
                 <div className={styles.passportContainer}>
                     {/* Секция Биометрический загранпаспорт */}
@@ -301,7 +291,7 @@ const Modal = ({ isOpen, onClose }) => {
                         <p>Укажите срок изготовления и стоимость.</p>
                         <ul>
                             {getOldPrices().map((item, index) => {
-                                // const finalPrice = isDutyEnabled ? item.price + 2000 : item.price;
+         
                                 return (
                                     <li key={index} className={styles.priceItem}>
                                         <span className={styles.priceLabel}>{item.label}</span>
@@ -319,35 +309,6 @@ const Modal = ({ isOpen, onClose }) => {
                     </div>
                 </div>
 
-
-                {/*<div className={styles.inputGroup}>*/}
-                {/*    <label>Способ подачи документов</label>*/}
-                {/*    <div className={styles.buttonGroup}>*/}
-                {/*        <button*/}
-                {/*            className={`${styles.methodButton} ${selectedMethod === "email" ? styles.activeButton : styles.outlineButton}`}*/}
-                {/*            onClick={() => handleMethodClick("email")}*/}
-                {/*        >*/}
-                {/*            По электронной почте*/}
-                {/*        </button>*/}
-                {/*        <button*/}
-                {/*            className={`${styles.methodButton} ${selectedMethod === "office" ? styles.activeButton : styles.outlineButton}`}*/}
-                {/*            onClick={() => handleMethodClick("office")}*/}
-                {/*        >*/}
-                {/*            Офис*/}
-                {/*        </button>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
-
-                {/*{selectedMethod === "email" && (*/}
-                {/*    <p className={styles.methodDescription}>Вы получите инструкции по подаче документов на вашу*/}
-                {/*        электронную почту.</p>*/}
-                {/*)}*/}
-
-                {/*{selectedMethod === "office" && (*/}
-                {/*    <p className={styles.methodDescription}>Вы можете подать документы в нашем офисе по предварительной*/}
-                {/*        записи.</p>*/}
-                {/*)}*/}
                 <div className={styles.contactContainer}>
                     <div className={styles.firstContactContainer}>
                         <div className={styles.contactForm}>
@@ -373,37 +334,22 @@ const Modal = ({ isOpen, onClose }) => {
                                     <label htmlFor="phone">Номер телефона *</label>
                                     <IMaskInput
                                         id="phone"
-                                        mask="+7 (000) 000-00-00"
+                                        mask="+7 (000) 000-00-000"
                                         unmask={true}
                                         type="tel"
                                         name="phone"
                                         placeholder="+7 (999) 999-99-99"
                                         className={styles.inputField}
                                         value={formData.phone}
-                                        onAccept={(value) => setFormData({...formData, phone: value})}
-                                        onBlur={(e) => handleInputChange(e)} // Добавили onBlur для обновления
+                                        onAccept={(value) => {
+                                            setFormData({...formData, phone: value});
+                                        }}
+                                        onBlur={(e) => handleInputChange(e)}
                                         required
                                     />
                                     {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
                                 </div>
                             </div>
-
-                            {/*/!* Email с маской *!/*/}
-                            {/*<div className={styles.inputWrapper}>*/}
-                            {/*    <label htmlFor="email">Электронная почта *</label>*/}
-                            {/*    <input*/}
-                            {/*        id="email"*/}
-                            {/*        type="email"*/}
-                            {/*        name="email"*/}
-                            {/*        placeholder="example@mail.com"*/}
-                            {/*        className={styles.inputField}*/}
-                            {/*        value={formData.email}*/}
-                            {/*        onChange={handleInputChange}*/}
-                            {/*        onBlur={handleInputChange} // Валидация при выходе из поля*/}
-                            {/*        required*/}
-                            {/*    />*/}
-                            {/*    {errors.email && <span className={styles.errorText}>{errors.email}</span>}*/}
-                            {/*</div>*/}
 
 
                         </div>
